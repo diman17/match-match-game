@@ -1,0 +1,32 @@
+.header {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__logo {
+  align-self: center;
+}
+
+.header__navigation {
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: $media-small) {
+    position: absolute;
+    z-index: -1;
+    top: -200px;
+    left: 0;
+
+    flex-direction: column;
+
+    transition: top 0.6s;
+  }
+}
+
+.navigation-show .header__navigation {
+  @media (max-width: $media-small) {
+    top: $height-header;
+  }
+}

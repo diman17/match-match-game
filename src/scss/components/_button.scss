@@ -1,0 +1,18 @@
+.button {
+  @include button-reset;
+
+  padding: 10px 15px;
+
+  font: 500 14px/16px $base-font-family;
+  color: $base-color;
+  text-transform: uppercase;
+
+  background-color: #f2f9fe;
+  box-shadow: 0 3px 5px rgba(0 0 0 / 20%), 0 1px 18px rgba(0 0 0 / 12%), 0 6px 10px rgba(0 0 0 / 14%);
+  border-radius: 4px;
+
+  &:hover {
+    transform: scale(0.99);
+    box-shadow: 0 3px 5px rgba(0 0 0 / 30%), 0 1px 18px rgba(0 0 0 / 22%), 0 6px 10px rgba(0 0 0 / 24%);
+  }
+}

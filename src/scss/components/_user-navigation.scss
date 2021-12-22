@@ -1,0 +1,17 @@
+.user-navigation {
+  @media (max-width: $media-small) {
+    width: 100%;
+  }
+}
+
+.user-navigation__item {
+  @media (max-width: $media-small) {
+    width: 100%;
+  }
+}
+
+.user-navigation__button {
+  @media (max-width: $media-small) {
+    width: 80%;
+  }
+}

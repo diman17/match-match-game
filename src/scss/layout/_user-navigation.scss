@@ -1,0 +1,15 @@
+.user-navigation {
+  display: flex;
+}
+
+.user-navigation__item {
+  display: flex;
+
+  @media (max-width: $media-small) {
+    justify-content: center;
+  }
+}
+
+.user-navigation__button {
+  align-self: center;
+}

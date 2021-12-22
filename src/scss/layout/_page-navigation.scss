@@ -1,0 +1,7 @@
+.page-navigation {
+  display: flex;
+
+  @media (max-width: $media-small) {
+    margin-bottom: 20px;
+  }
+}
