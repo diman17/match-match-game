@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin")
 const path = require('path');
 
 module.exports = {
@@ -7,11 +8,12 @@ module.exports = {
 
   devtool: "inline-source-map",
 
-  entry: './src/main.js',
+  entry: './src/scripts/main.js',
 
   output: {
     filename: 'main.[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: 'assets/[hash][ext][query]',
     clean: true,
   },
 
@@ -25,6 +27,13 @@ module.exports = {
           "sass-loader",
         ],
       },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/fonts/[contenthash][ext][query]'
+        }
+      },
     ],
   },
 
@@ -35,6 +44,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'style.[contenthash].css'
     }),
+    new CopyPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, 'src/assets/icons/logo.svg'), to: "assets/icons" },
+      ],
+    })
   ],
 
   devServer: {
