@@ -17,4 +17,19 @@ export class HeaderComponent extends AbstractComponent {
   getTemplate() {
     return createHeaderTemplate();
   }
+
+  buttonBurgerClickHandler() {
+    this.getElement()
+      .querySelector('.button-burger')
+      .addEventListener('click', (event) => {
+        const {currentTarget} = event;
+        if (!currentTarget.classList.contains('button-burger--close')) {
+          currentTarget.classList.add('button-burger--close');
+          this.getElement().classList.add('navigation-show');
+        } else {
+          currentTarget.classList.remove('button-burger--close');
+          this.getElement().classList.remove('navigation-show');
+        }
+      });
+  }
 }
