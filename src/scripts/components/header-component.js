@@ -11,7 +11,7 @@ const createHeaderTemplate = () => `<header class="header">
 export class HeaderComponent extends AbstractComponent {
   constructor() {
     super();
-    this.navigation = this.getElement().querySelector('.header__navigation');
+    this.navigationElement = this.getElement().querySelector('.header__navigation');
   }
 
   getTemplate() {
@@ -22,7 +22,7 @@ export class HeaderComponent extends AbstractComponent {
     this.getElement()
       .querySelector('.button-burger')
       .addEventListener('click', (event) => {
-        const {currentTarget} = event;
+        const { currentTarget } = event;
         if (!currentTarget.classList.contains('button-burger--close')) {
           currentTarget.classList.add('button-burger--close');
           this.getElement().classList.add('navigation-show');
