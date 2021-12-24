@@ -1,21 +1,18 @@
+import { AboutGamePageComponent } from '../components/about-game-page-component';
+import { render } from '../utils/render';
+
 const routes = {
   ABOUT_GAME: {
     path: '#about-game',
-    component() {
-      console.log('about game');
-    },
+    component: new AboutGamePageComponent(),
   },
   BEST_SCORE: {
     path: '#best-score',
-    component() {
-      console.log('best score');
-    },
+    component: {},
   },
   GAME_SETTINGS: {
     path: '#game-settings',
-    component() {
-      console.log('game settings');
-    },
+    component: {},
   },
 };
 
@@ -36,7 +33,7 @@ export class Router {
     const path = window.location.hash;
     this._defineActivePageLink(path, this.pageLinkElements);
     const component = this._findComponentByPath(path, this.routes);
-    component();
+    render(document.body, component);
   }
 
   _findComponentByPath(path, routesList) {
