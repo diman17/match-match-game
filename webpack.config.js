@@ -47,6 +47,7 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         { from: path.resolve(__dirname, 'src/assets/icons/logo.svg'), to: "assets/icons" },
+        { from: path.resolve(__dirname, 'src/assets/images/about-game/'), to: "assets/images/about-game" },
       ],
     })
   ],

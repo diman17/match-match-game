@@ -3,11 +3,16 @@ $base-color: #2196f3;
 $navigation-link-color: #fff;
 $navigation-link-active-bg-color: #1e88e5;
 $button-burger-color: #fff;
+$main-bg-color: rgba(0 0 0 / 5%);
+$about-game-step-item-bg-color: #fff;
+$about-game-step-item-number-color: #fff;
+$about-game-step-item-text-color: rgba(0 0 0 / 68%);
 
 /* fonts */
 $base-font-family: "Roboto", sans-serif;
 
 /* media */
+$media-middle: 1280px;
 $media-small: 768px;
 
 /* sizes */
@@ -15,3 +20,5 @@ $height-header: 65px;
 
 /* shadows */
 $header-shadow: 0 4px 4px rgba(0 0 0 / 25%);
+$about-game-step-item-number-shadow: 0 1px 5px rgba(0 0 0 / 20%), 0 3px 4px rgba(0 0 0 / 12%),
+  0 2px 4px rgba(0 0 0 / 14%);

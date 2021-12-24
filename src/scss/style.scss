@@ -3,18 +3,20 @@
 @import "base/base";
 @import "base/typography";
 
-/* base */
+/* abstracts */
 @import "abstracts/variables";
 @import "abstracts/mixins";
 
-/* base */
+/* layout */
 @import "layout/header";
 @import "layout/page-navigation";
 @import "layout/user-navigation";
+@import "layout/about-game";
 
-/* base */
+/* components */
 @import "components/header";
 @import "components/page-navigation";
 @import "components/user-navigation";
 @import "components/button";
 @import "components/button-burger";
+@import "components/about-game";

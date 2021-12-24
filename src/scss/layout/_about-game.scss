@@ -1,0 +1,41 @@
+.game-about {
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 120px;
+
+  @media (max-width: $media-small) {
+    margin-bottom: 30px;
+  }
+}
+
+.game-about__title {
+  margin-bottom: 20px;
+
+  @media (max-width: $media-small) {
+    margin-bottom: 40px;
+  }
+}
+
+.game-about__item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+
+  @media (max-width: $media-small) {
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+}
+
+.game-about__item-description {
+  display: flex;
+
+  @media (max-width: $media-small) {
+    margin-bottom: 15px;
+  }
+}
+
+.game-about__item-number {
+  flex-shrink: 0;
+  margin-right: 15px;
+}

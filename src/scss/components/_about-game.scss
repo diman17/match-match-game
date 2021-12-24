@@ -1,0 +1,73 @@
+.game-about {
+  width: 70%;
+  padding: 30px;
+
+  background-color: $main-bg-color;
+
+  @media (max-width: $media-small) {
+    width: 90%;
+    padding: 15px;
+  }
+}
+
+.game-about__title {
+  font: 500 20px/30px $base-font-family;
+}
+
+.game-about__list {
+  width: 82%;
+
+  @media (max-width: $media-middle) {
+    width: 87%;
+  }
+
+  @media (max-width: $media-small) {
+    width: auto;
+  }
+}
+
+.game-about__item-description {
+  width: 46%;
+  padding: 15px;
+
+  background-color: $about-game-step-item-bg-color;
+
+  @media (max-width: $media-middle) {
+    padding: 10px;
+  }
+
+  @media (max-width: $media-small) {
+    width: auto;
+  }
+}
+
+.game-about__item-number {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+
+  font: 400 24px/40px $base-font-family;
+  color: $about-game-step-item-number-color;
+  text-align: center;
+
+  background-color: $base-color;
+  box-shadow: $about-game-step-item-number-shadow;
+  border-radius: 50%;
+
+  @media (max-width: $media-middle) {
+    width: 30px;
+    height: 30px;
+
+    font: 400 16px/30px $base-font-family;
+  }
+}
+
+.game-about__item-text {
+  font: 400 14px/20px $base-font-family;
+  letter-spacing: 0.25px;
+  color: $about-game-step-item-text-color;
+
+  @media (max-width: $media-middle) {
+    font: 400 12px/16px $base-font-family;
+  }
+}
