@@ -1,11 +1,13 @@
 import { AbstractComponent } from './abstract-component';
 
 const createHeaderTemplate = () => `<header class="header">
-    <img class="header__logo" src="./assets/icons/logo.svg" alt="logo" width="80" height="40" />
+    <div class="header-wrapper">
+      <img class="header__logo" src="./assets/icons/logo.svg" alt="logo" width="80" height="40" />
+      <button class="button-burger header__button-burger">
+        <span class="button-burger__line"></span>
+      </button>
+    </div>
     <nav class="header__navigation"></nav>
-    <button class="button-burger header__button-burger">
-      <span class="button-burger__line"></span>
-    </button>
   </header>`;
 
 export class HeaderComponent extends AbstractComponent {

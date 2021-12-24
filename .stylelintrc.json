@@ -8,6 +8,7 @@
   ],
   "rules": {
     "declaration-empty-line-before": null,
-    "selector-class-pattern": null
+    "selector-class-pattern": null,
+    "scss/dollar-variable-empty-line-before": null
   }
 }

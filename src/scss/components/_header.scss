@@ -1,6 +1,6 @@
-.header {
-  width: auto;
-  padding: 0 20px;
+.header-wrapper {
+  width: 100%;
+  padding: 12px 20px 13px;
 
   background-color: $base-color;
   box-shadow: $header-shadow;
@@ -14,12 +14,12 @@
   }
 }
 
-.navigation-show {
+.navigation-show .header-wrapper {
   box-shadow: none;
 }
 
 .header__navigation {
-  width: 80%;
+  width: 78%;
 
   @media (max-width: $media-small) {
     width: 100%;
