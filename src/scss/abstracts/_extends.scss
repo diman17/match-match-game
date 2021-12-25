@@ -1,0 +1,21 @@
+%main-page {
+  width: 70%;
+  min-height: 800px;
+  padding: 30px 100px 35px 30px;
+
+  background-color: $main-bg-color;
+  border-radius: 5px;
+
+  @media (max-width: $media-middle) {
+    min-height: 500px;
+  }
+
+  @media (max-width: $media-small) {
+    width: 90%;
+    padding: 25px;
+  }
+}
+
+%main-page-title {
+  font: 500 20px/30px $base-font-family;
+}

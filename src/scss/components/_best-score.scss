@@ -1,19 +1,9 @@
 .best-score {
-  width: 70%;
-  padding: 50px;
-  padding-right: 100px;
-
-  background-color: $main-bg-color;
-  border-radius: 5px;
-
-  @media (max-width: $media-small) {
-    width: 90%;
-    padding: 25px;
-  }
+  @extend %main-page;
 }
 
 .best-score__title {
-  font: 500 20px/30px $base-font-family;
+  @extend %main-page-title;
 }
 
 .best-score__item {
