@@ -1,5 +1,6 @@
 import { AboutGamePageComponent } from '../components/about-game-page-component';
 import { BestScorePageComponent } from '../components/best-score-page-component';
+import { GameSettingsPageComponent } from '../components/game-settings-page-component';
 import { generatePlayers } from '../mock/players';
 import { remove, render } from '../utils/render';
 
@@ -16,7 +17,7 @@ const routes = {
   },
   GAME_SETTINGS: {
     path: '#game-settings',
-    component: {},
+    component: new GameSettingsPageComponent(),
   },
 };
 
