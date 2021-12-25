@@ -1,7 +1,8 @@
 import { AbstractComponent } from './abstract-component';
 
 const createHeaderTemplate = () => `<header class="header">
-    <div class="header-wrapper">
+    <h1 class="header__title">Match Match Game</h1>
+    <div class="header__wrapper">
       <img class="header__logo" src="./assets/icons/logo.svg" alt="logo" width="80" height="40" />
       <button class="button-burger header__button-burger">
         <span class="button-burger__line"></span>
