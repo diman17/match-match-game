@@ -1,5 +1,5 @@
 %main-page {
-  width: 70%;
+  max-width: 1000px;
   min-height: 800px;
   padding: 30px 100px 35px 30px;
 
@@ -7,6 +7,7 @@
   border-radius: 5px;
 
   @media (max-width: $media-middle) {
+    width: 80%;
     min-height: 500px;
   }
 
@@ -19,7 +20,6 @@
 %main-page-layout {
   margin: 0 auto;
   margin-top: 30px;
-  margin-bottom: 120px;
 
   @media (max-width: $media-small) {
     margin-bottom: 30px;
@@ -32,8 +32,4 @@
 
 %main-page-title-layout {
   margin-bottom: 20px;
-
-  @media (max-width: $media-small) {
-    margin-bottom: 40px;
-  }
 }

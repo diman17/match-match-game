@@ -13,6 +13,7 @@
 
   @media (max-width: $media-small) {
     flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 40px;
   }
 }
