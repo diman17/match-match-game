@@ -48,6 +48,7 @@ module.exports = {
       patterns: [
         { from: path.resolve(__dirname, 'src/assets/icons/logo.svg'), to: "assets/icons" },
         { from: path.resolve(__dirname, 'src/assets/images/about-game/'), to: "assets/images/about-game" },
+        { from: path.resolve(__dirname, 'src/assets/images/no-avatar.png'), to: "assets/images" },
       ],
     })
   ],

@@ -29,3 +29,8 @@ export const render = (container, component, position = 'append') => {
       throw new Error('Unknown render position');
   }
 };
+
+export const remove = (component) => {
+  component.getElement().remove();
+  component.removeElement();
+};

@@ -1,5 +1,9 @@
 import { AboutGamePageComponent } from '../components/about-game-page-component';
-import { render } from '../utils/render';
+import { BestScorePageComponent } from '../components/best-score-page-component';
+import { generatePlayers } from '../mock/players';
+import { remove, render } from '../utils/render';
+
+const players = generatePlayers();
 
 const routes = {
   ABOUT_GAME: {
@@ -8,7 +12,7 @@ const routes = {
   },
   BEST_SCORE: {
     path: '#best-score',
-    component: {},
+    component: new BestScorePageComponent(players),
   },
   GAME_SETTINGS: {
     path: '#game-settings',
@@ -21,6 +25,8 @@ export class Router {
     this.routes = routes;
     this.pageLinkElements = [];
 
+    this._currentRoute = null;
+
     this._handleHashChange = this._handleHashChange.bind(this);
   }
 
@@ -30,9 +36,16 @@ export class Router {
   }
 
   _renderRoute() {
+    if (this._currentRoute) {
+      remove(this._currentRoute);
+    }
+
     const path = window.location.hash;
     this._defineActivePageLink(path, this.pageLinkElements);
+
     const component = this._findComponentByPath(path, this.routes);
+    this._currentRoute = component;
+
     render(document.body, component);
   }
 
