@@ -1,0 +1,38 @@
+.best-score {
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 120px;
+
+  @media (max-width: $media-small) {
+    margin-bottom: 30px;
+  }
+}
+
+.best-score__title {
+  margin-bottom: 20px;
+
+  @media (max-width: $media-small) {
+    margin-bottom: 40px;
+  }
+}
+
+.best-score__item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.best-score__player-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.best-score__player-avatar {
+  margin-right: 15px;
+  margin-bottom: 5px;
+}
+
+.best-score__player-score {
+  align-self: center;
+  margin-left: 10px;
+}
