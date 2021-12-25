@@ -16,6 +16,24 @@
   }
 }
 
+%main-page-layout {
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 120px;
+
+  @media (max-width: $media-small) {
+    margin-bottom: 30px;
+  }
+}
+
 %main-page-title {
   font: 500 20px/30px $base-font-family;
+}
+
+%main-page-title-layout {
+  margin-bottom: 20px;
+
+  @media (max-width: $media-small) {
+    margin-bottom: 40px;
+  }
 }

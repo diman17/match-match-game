@@ -1,19 +1,9 @@
 .best-score {
-  margin: 0 auto;
-  margin-top: 30px;
-  margin-bottom: 120px;
-
-  @media (max-width: $media-small) {
-    margin-bottom: 30px;
-  }
+  @extend %main-page-layout;
 }
 
 .best-score__title {
-  margin-bottom: 20px;
-
-  @media (max-width: $media-small) {
-    margin-bottom: 40px;
-  }
+  @extend %main-page-title-layout;
 }
 
 .best-score__item {

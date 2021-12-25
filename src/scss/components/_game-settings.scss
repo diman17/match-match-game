@@ -1,0 +1,37 @@
+.game-settings {
+  width: 70%;
+  min-height: 250px;
+  padding: 30px 100px 35px 30px;
+
+  box-shadow: 0 6px 5px rgba(0 0 0 / 24%), 0 9px 18px rgba(0 0 0 / 18%);
+
+  @media (max-width: $media-small) {
+    width: 90%;
+    padding: 25px;
+  }
+}
+
+.game-settings__item {
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.game-settings__label {
+  font: 500 20px/30px $base-font-family;
+  color: $game-settings-label-color;
+  letter-spacing: 0.15px;
+}
+
+.game-settings__select {
+  padding-right: 25px;
+  font: 400 14px/21px $base-font-family;
+  color: $game-settings-option-disabled-color;
+  letter-spacing: 0.25px;
+
+  border: none;
+}
+
+.game-settings__option {
+  color: $game-settings-option-color;
+}
