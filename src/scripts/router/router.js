@@ -2,7 +2,7 @@ import { AboutGamePageComponent } from '../components/about-game-page-component'
 import { BestScorePageComponent } from '../components/best-score-page-component';
 import { GameSettingsPageComponent } from '../components/game-settings-page-component';
 import { generatePlayers } from '../mock/players';
-import { remove, render } from '../utils/render';
+import { removeComponent, renderComponent } from '../utils/common';
 
 const players = generatePlayers();
 
@@ -38,7 +38,7 @@ export class Router {
 
   _renderRoute() {
     if (this._currentRoute) {
-      remove(this._currentRoute);
+      removeComponent(this._currentRoute);
     }
 
     const path = window.location.hash;
@@ -47,7 +47,7 @@ export class Router {
     const component = this._findComponentByPath(path, this.routes);
     this._currentRoute = component;
 
-    render(document.body, component);
+    renderComponent(document.body, component);
   }
 
   _findComponentByPath(path, routesList) {

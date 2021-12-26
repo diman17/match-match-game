@@ -11,7 +11,7 @@ export const renderPosition = {
   AFTER: 'after',
 };
 
-export const render = (container, component, position = 'append') => {
+export const renderComponent = (container, component, position = 'append') => {
   switch (position) {
     case 'append':
       container.append(component.getElement());
@@ -30,7 +30,7 @@ export const render = (container, component, position = 'append') => {
   }
 };
 
-export const remove = (component) => {
+export const removeComponent = (component) => {
   component.getElement().remove();
   component.removeElement();
 };

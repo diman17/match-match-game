@@ -39,6 +39,11 @@ const createPopupLogInTemplate = () => {
 };
 
 export class PopupLogInComponent extends AbstractComponent {
+  constructor() {
+    super();
+    this.firstNameInput = this.getElement().querySelector('.popup-log-in__input');
+  }
+
   getTemplate() {
     return createPopupLogInTemplate();
   }
