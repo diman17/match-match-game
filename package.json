@@ -10,7 +10,8 @@
     "build": "cross-env MODE=production webpack",
     "eslint": "eslint --fix ./src/**/*.js",
     "stylelint": "npx stylelint ./src/**/*.scss",
-    "prettier": "prettier --write ./src"
+    "prettier": "prettier --write ./src",
+    "lint": "npm run prettier && npm run eslint && npm run stylelint"
   },
   "repository": {
     "type": "git",
