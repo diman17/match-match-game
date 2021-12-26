@@ -31,7 +31,7 @@
   text-align: center;
 
   background-color: $base-color;
-  box-shadow: $about-game-step-item-number-shadow;
+  box-shadow: $base-shadow;
   border-radius: 50%;
 
   @media (max-width: $media-middle) {

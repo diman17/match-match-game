@@ -17,6 +17,12 @@ $game-settings-label-color: rgba(0 0 0 / 87%);
 $game-settings-option-disabled-color: rgba(0 0 0 / 60%);
 $game-settings-option-color: #000;
 
+$popup-bg-color: #fafafa;
+$popup-bg-label-color: rgba(33 33 33 / 8%);
+$popup-bg-title-color: #fff;
+
+$overlay-color: rgba(0 0 0 / 25%);
+
 /* fonts */
 $base-font-family: "Roboto", sans-serif;
 
@@ -29,9 +35,12 @@ $height-header: 65px;
 
 /* shadows */
 $header-shadow: 0 4px 4px rgba(0 0 0 / 25%);
-$about-game-step-item-number-shadow: 0 1px 5px rgba(0 0 0 / 20%), 0 3px 4px rgba(0 0 0 / 12%),
-  0 2px 4px rgba(0 0 0 / 14%);
+$base-shadow: 0 1px 5px rgba(0 0 0 / 20%), 0 3px 4px rgba(0 0 0 / 12%), 0 2px 4px rgba(0 0 0 / 14%);
 
 /* z-index */
-$index-header: 10;
 $index-navigation: 5;
+$index-header: 10;
+
+$index-overlay: 20;
+$index-popup: 25;
+$index-popup-label: 30;

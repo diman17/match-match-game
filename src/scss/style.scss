@@ -15,6 +15,8 @@
 @import "layout/about-game";
 @import "layout/best-score";
 @import "layout/game-settings";
+@import "layout/popup-log-in";
+@import "layout/overlay";
 
 /* components */
 @import "components/header";
@@ -25,3 +27,5 @@
 @import "components/about-game";
 @import "components/best-score";
 @import "components/game-settings";
+@import "components/popup-log-in";
+@import "components/overlay";
