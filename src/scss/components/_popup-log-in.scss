@@ -41,26 +41,26 @@
 
   background-color: $popup-bg-label-color;
   border-radius: 4px 4px 0 0;
-  border-bottom: 1px solid rgba(0 0 0 / 60%);
+  border-bottom: $popup-log-in-border-bottom;
 }
 
 .popup-log-in__label-text {
   font: 400 12px/16px $base-font-family;
+  color: $popup-log-in-label-color;
   letter-spacing: 0.4px;
-  color: rgba(0 0 0 / 38%);
 }
 
 .popup-log-in__input {
   font: 400 16px/24px $base-font-family;
+  color: $popup-log-in-input-color;
   letter-spacing: 0.15px;
-  color: rgba(0 0 0 / 87%);
 
   background-color: transparent;
   border: none;
 }
 
 .popup-log-in__input::placeholder {
-  color: rgba(0 0 0 / 87%);
+  color: $popup-log-in-input-color;
 }
 
 .popup-log-in__input-status {

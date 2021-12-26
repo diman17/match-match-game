@@ -3,7 +3,7 @@
   min-height: 250px;
   padding: 30px 100px 35px 30px;
 
-  box-shadow: 0 6px 5px rgba(0 0 0 / 24%), 0 9px 18px rgba(0 0 0 / 18%);
+  box-shadow: $game-settings-shadow;
 
   @media (max-width: $media-small) {
     width: 90%;
@@ -14,7 +14,7 @@
 .game-settings__item {
   padding-bottom: 10px;
 
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: $game-settings-border-botton;
 }
 
 .game-settings__label {

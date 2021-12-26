@@ -15,7 +15,8 @@ const gameSettings = {
   },
 };
 
-const createGameSettingsOptionTemplate = (option) => `<option class="game-settings__option" value="${option}">${option}</option>`;
+const createGameSettingsOptionTemplate = (option) =>
+  `<option class="game-settings__option" value="${option}">${option}</option>`;
 
 const createGameSettingsItemTemplate = (setting) => `<li class="game-settings__item">
     <label class="game-settings__label" for="${setting.name}">${setting.label}</label>
