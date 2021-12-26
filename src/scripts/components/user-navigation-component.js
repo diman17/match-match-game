@@ -11,7 +11,7 @@ export class UserNavigationComponent extends AbstractComponent {
     return createUserNavigationTemplate();
   }
 
-  buttonClickHandler(handler) {
+  buttonLogInClickHandler(handler) {
     this.getElement().querySelector('.button').addEventListener('click', handler);
   }
 }

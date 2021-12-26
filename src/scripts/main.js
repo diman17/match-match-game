@@ -1,8 +1,8 @@
 import '../scss/style.scss';
-import { HeaderController } from './controllers/header-controller';
+import { MainController } from './controllers/main-controller';
 import { Router } from './router/router';
 
 const router = new Router();
 
-const headerController = new HeaderController(document.body, router);
-headerController.init();
+const mainController = new MainController(document.body, router);
+mainController.init();
