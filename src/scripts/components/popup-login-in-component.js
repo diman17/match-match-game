@@ -26,8 +26,8 @@ const createPopupLogInTemplate = () => {
       </fieldset>
       <fieldset class="popup-log-in__fieldset--avatar">
         <legend class="popup-log-in__legend--avatar">User's avatar</legend>
-        <label class="popup-log-in__label--avatar" for="avatar"></label>
         <input class="popup-log-in__input--avatar" id="avatar" type="file" />
+        <label class="popup-log-in__label--avatar" for="avatar"></label>
         <img class="popup-log-in__avatar" src="./assets/images/no-avatar.png" alt="player's avatar" />
       </fieldset>
       <div class="popup-log-in__wrapper">

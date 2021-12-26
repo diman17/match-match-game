@@ -57,6 +57,10 @@
 
   background-color: transparent;
   border: none;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .popup-log-in__input::placeholder {
@@ -70,15 +74,23 @@
   background-image: url("../assets/icons/success.svg");
 }
 
-.popup-log-in__input--avatar {
-  @include visually-hidden;
-}
-
 .popup-log-in__label--avatar {
   width: 100%;
   height: 100%;
 
   cursor: pointer;
+
+  &:hover::after {
+    @extend %popup-log-in-label-hover;
+  }
+}
+
+.popup-log-in__input--avatar {
+  @include visually-hidden;
+
+  &:focus + .popup-log-in__label--avatar::after {
+    @extend %popup-log-in-label-hover;
+  }
 }
 
 .popup-log-in__avatar {

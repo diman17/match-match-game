@@ -33,3 +33,17 @@
 %main-page-title-layout {
   margin-bottom: 20px;
 }
+
+%popup-log-in-label-hover {
+  content: "";
+
+  position: absolute;
+  top: 25%;
+  left: 25%;
+
+  width: 50%;
+  height: 50%;
+
+  background-image: url("../assets/icons/plus-symbol.svg");
+  background-repeat: no-repeat;
+}
