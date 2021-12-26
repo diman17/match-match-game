@@ -10,10 +10,12 @@ export class UserNavigationController {
 
     this._userNavigationComponent = new UserNavigationComponent();
 
-    this._popupLogInController = new PopupLogInController(this._rootContainer);
+    this._onSuccessLogIn = this._onSuccessLogIn.bind(this);
+    this._popupLogInController = new PopupLogInController(this._rootContainer, this._onSuccessLogIn);
 
     this._handleButtonLogInClick = this._handleButtonLogInClick.bind(this);
     this._handleOverlayClick = this._handleOverlayClick.bind(this);
+    this._handleEscKeyDown = this._handleEscKeyDown.bind(this);
   }
 
   init() {
@@ -37,11 +39,29 @@ export class UserNavigationController {
     renderComponent(this._rootContainer, this._overlayComponent);
 
     this._popupLogInController.init();
+
+    document.addEventListener('keydown', this._handleEscKeyDown);
   }
 
   _hidePopupLogIn() {
     removeComponent(this._overlayComponent);
 
     this._popupLogInController.hide();
+
+    document.removeEventListener('keydown', this._handleEscKeyDown);
+  }
+
+  _handleEscKeyDown(event) {
+    const isEscKey = event.key === 'Escape' || event.key === 'Esc';
+
+    if (isEscKey) {
+      this._hidePopupLogIn();
+
+      document.removeEventListener('keydown', this._handleEscKeyDown);
+    }
+  }
+
+  _onSuccessLogIn() {
+    this._hidePopupLogIn();
   }
 }

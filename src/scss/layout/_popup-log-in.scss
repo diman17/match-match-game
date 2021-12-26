@@ -52,7 +52,8 @@
   }
 }
 
-.popup-log-in__input-status {
+.popup-log-in__input-status-success,
+.popup-log-in__input-status-error {
   position: absolute;
   top: 18px;
   right: 15px;
@@ -77,6 +78,6 @@
   margin-left: 20px;
 
   @media (max-width: $media-small) {
-    margin-left: 25px;
+    margin-left: 35px;
   }
 }

@@ -64,14 +64,21 @@
 }
 
 .popup-log-in__input::placeholder {
-  color: $popup-log-in-input-color;
+  color: $popup-log-in-input-placeholder-color;
 }
 
-.popup-log-in__input-status {
+.popup-log-in__input-status-success {
   width: 25px;
   height: 25px;
 
   background-image: url("../assets/icons/success.svg");
+}
+
+.popup-log-in__input-status-error {
+  width: 25px;
+  height: 25px;
+
+  background-image: url("../assets/icons/error.svg");
 }
 
 .popup-log-in__label--avatar {
@@ -96,4 +103,8 @@
 .popup-log-in__avatar {
   width: 160px;
   height: 160px;
+
+  object-fit: cover;
+  object-position: 50% 50%;
+  border-radius: 50%;
 }
