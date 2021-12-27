@@ -28,7 +28,7 @@ export class PopupLogInController {
     this._popupLogInComponent.getElement().remove();
   }
 
-  _handleButtonSubmitClick() {
-    this._onSuccessLogIn();
+  _handleButtonSubmitClick(isLogIn, userAvatar) {
+    this._onSuccessLogIn(isLogIn, userAvatar);
   }
 }

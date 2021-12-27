@@ -1,4 +1,10 @@
 .user-navigation {
+  width: 330px;
+
+  @media (max-width: $media-middle) {
+    width: 300px;
+  }
+
   @media (max-width: $media-small) {
     width: 100%;
   }
@@ -14,4 +20,13 @@
   @media (max-width: $media-small) {
     width: 80%;
   }
+}
+
+.user-navigation__avatar {
+  width: 40px;
+  height: 40px;
+
+  object-fit: cover;
+  object-position: 50% 50%;
+  border-radius: 50%;
 }

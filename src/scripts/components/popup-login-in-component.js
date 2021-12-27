@@ -43,9 +43,13 @@ export class PopupLogInComponent extends AbstractComponent {
     super();
     this.firstNameInput = this.getElement().querySelector('.popup-log-in__input');
 
+    this._userAvatar = './assets/images/no-avatar.png';
+
     this._isValidateFirstName = false;
     this._isValidateLastName = false;
     this._isValidateEmail = false;
+
+    this._isLogIn = false;
   }
 
   getTemplate() {
@@ -92,7 +96,8 @@ export class PopupLogInComponent extends AbstractComponent {
         const reader = new FileReader();
         reader.readAsDataURL(event.target.files[0]);
         reader.onload = () => {
-          this.getElement().querySelector('.popup-log-in__avatar').src = reader.result;
+          this._userAvatar = reader.result;
+          this.getElement().querySelector('.popup-log-in__avatar').src = this._userAvatar;
         };
       });
   }
@@ -105,7 +110,8 @@ export class PopupLogInComponent extends AbstractComponent {
         const isValidateForm = this._isValidateFirstName && this._isValidateLastName && this._isValidateEmail;
 
         if (isValidateForm) {
-          handler();
+          this._isLogIn = true;
+          handler(this._isLogIn, this._userAvatar);
         }
       });
   }
@@ -121,7 +127,8 @@ export class PopupLogInComponent extends AbstractComponent {
             span.classList.add('popup-log-in__input-status-error');
           });
 
-        this.getElement().querySelector('.popup-log-in__avatar').src = './assets/images/no-avatar.png';
+        this._userAvatar = './assets/images/no-avatar.png';
+        this.getElement().querySelector('.popup-log-in__avatar').src = this._userAvatar;
 
         this._isValidateFirstName = false;
         this._isValidateLastName = false;

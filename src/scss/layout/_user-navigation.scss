@@ -1,5 +1,18 @@
 .user-navigation {
   display: flex;
+  align-items: center;
+
+  @media (max-width: $media-small) {
+    justify-content: center;
+  }
+}
+
+.user-navigation--log-in {
+  justify-content: end;
+}
+
+.user-navigation--log-out {
+  justify-content: space-between;
 }
 
 .user-navigation__item {
@@ -8,8 +21,4 @@
   @media (max-width: $media-small) {
     justify-content: center;
   }
-}
-
-.user-navigation__button {
-  align-self: center;
 }
