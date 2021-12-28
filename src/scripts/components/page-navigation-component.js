@@ -2,13 +2,13 @@ import { AbstractComponent } from './abstract-component';
 
 const createPageNavigationTemplate = (routes) => `<ul class="page-navigation">
     <li class="page-navigation__item">
-      <a class="page-navigation__link page-navigation__link--about page-navigation__link--active" href="${routes.ABOUT_GAME.path}">About game</a>
+      <a class="page-navigation__link page-navigation__link--about page-navigation__link--active" href="${routes.ABOUT_GAME_PAGE.hash}">About game</a>
     </li>
     <li class="page-navigation__item">
-      <a class="page-navigation__link page-navigation__link--score" href="${routes.BEST_SCORE.path}">Best score</a>
+      <a class="page-navigation__link page-navigation__link--score" href="${routes.BEST_SCORE_PAGE.hash}">Best score</a>
     </li>
     <li class="page-navigation__item">
-      <a class="page-navigation__link page-navigation__link--settings" href="${routes.GAME_SETTINGS.path}">Game Settings</a>
+      <a class="page-navigation__link page-navigation__link--settings" href="${routes.GAME_SETTINGS_PAGE.hash}">Game Settings</a>
     </li>
   </ul>`;
 

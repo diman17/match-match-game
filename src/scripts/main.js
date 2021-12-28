@@ -2,7 +2,9 @@ import '../scss/style.scss';
 import { MainController } from './controllers/main-controller';
 import { Router } from './router/router';
 
-const router = new Router();
+const ROOT_CONTAINER = document.body;
 
-const mainController = new MainController(document.body, router);
+const router = new Router(ROOT_CONTAINER);
+
+const mainController = new MainController(ROOT_CONTAINER, router);
 mainController.init();

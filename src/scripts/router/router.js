@@ -1,29 +1,26 @@
-import { AboutGamePageComponent } from '../components/about-game-page-component';
-import { BestScorePageComponent } from '../components/best-score-page-component';
-import { GameSettingsPageComponent } from '../components/game-settings-page-component';
-import { generatePlayers } from '../mock/players';
-import { removeComponent, renderComponent } from '../utils/common';
-
-const players = generatePlayers();
-
-const routes = {
-  ABOUT_GAME: {
-    path: '#about-game',
-    component: new AboutGamePageComponent(),
-  },
-  BEST_SCORE: {
-    path: '#best-score',
-    component: new BestScorePageComponent(players),
-  },
-  GAME_SETTINGS: {
-    path: '#game-settings',
-    component: new GameSettingsPageComponent(),
-  },
-};
+import { AboutGamePageController } from '../controllers/about-game-page-controller';
+import { BestScorePageController } from '../controllers/best-score-page-controller';
+import { GameSettingsPageController } from '../controllers/game-settings-page-controller';
 
 export class Router {
-  constructor() {
-    this.routes = routes;
+  constructor(rootContainer) {
+    this._rootConstainer = rootContainer;
+
+    this.routes = {
+      ABOUT_GAME_PAGE: {
+        hash: '#about-game',
+        controller: new AboutGamePageController(this._rootConstainer),
+      },
+      BEST_SCORE_PAGE: {
+        hash: '#best-score',
+        controller: new BestScorePageController(this._rootConstainer),
+      },
+      GAME_SETTINGS_PAGE: {
+        hash: '#game-settings',
+        controller: new GameSettingsPageController(this._rootConstainer),
+      },
+    };
+
     this.pageLinkElements = [];
 
     this._currentRoute = null;
@@ -38,39 +35,38 @@ export class Router {
 
   _renderRoute() {
     if (this._currentRoute) {
-      removeComponent(this._currentRoute);
+      this._currentRoute.destroy();
     }
 
-    const path = window.location.hash;
-    this._defineActivePageLink(path, this.pageLinkElements);
+    const {hash} = window.location;
+    this._defineActivePageLink(hash, this.pageLinkElements);
 
-    const component = this._findComponentByPath(path, this.routes);
-    this._currentRoute = component;
-
-    renderComponent(document.body, component);
+    const controller = this._findControllerByHash(hash, this.routes);
+    this._currentRoute = controller;
+    this._currentRoute.init();
   }
 
-  _findComponentByPath(path, routesList) {
-    if (!path) {
-      return routesList.ABOUT_GAME.component;
+  _findControllerByHash(hash, routesList) {
+    if (!hash) {
+      return routesList.ABOUT_GAME_PAGE.controller;
     }
 
-    return Object.values(routesList).find((route) => route.path === path).component;
+    return Object.values(routesList).find((route) => route.hash === hash).controller;
   }
 
-  _defineActivePageLink(path, pagelinks) {
+  _defineActivePageLink(hash, pagelinks) {
     pagelinks.forEach((pageLink) => {
-      if (!path) {
+      pageLink.classList.remove('page-navigation__link--active');
+
+      if (!hash) {
         pagelinks.forEach((link) => {
-          link.classList.remove('page-navigation__link--active');
-          if (link.getAttribute('href') === this.routes.ABOUT_GAME.path) {
+          if (link.getAttribute('href') === this.routes.ABOUT_GAME_PAGE.hash) {
             link.classList.add('page-navigation__link--active');
           }
         });
       }
 
-      if (path === pageLink.getAttribute('href')) {
-        pagelinks.forEach((link) => link.classList.remove('page-navigation__link--active'));
+      if (hash === pageLink.getAttribute('href')) {
         pageLink.classList.add('page-navigation__link--active');
       }
     });
@@ -79,8 +75,8 @@ export class Router {
   _handleHashChange() {
     this._renderRoute();
 
-    const path = window.location.hash;
-    this._defineActivePageLink(path, this.pageLinkElements);
+    const {hash} = window.location;
+    this._defineActivePageLink(hash, this.pageLinkElements);
   }
 
   _hashChangeHandler(handler) {
