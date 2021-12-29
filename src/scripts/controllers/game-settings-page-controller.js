@@ -1,5 +1,5 @@
 import { GameSettingsPageComponent } from '../components/game-settings-page-component';
-import { removeComponent, renderComponent } from '../utils/common';
+import { renderComponent } from '../utils/common';
 
 export class GameSettingsPageController {
   constructor(container) {
@@ -10,9 +10,20 @@ export class GameSettingsPageController {
 
   init() {
     renderComponent(this._container, this._gameSettingsPageComponent);
+
+    this._gameSettingsPageComponent.selectGameCardsHandler(this._handleSelectGameCards);
+    this._gameSettingsPageComponent.selectDifficultyHandler(this._handleSelectDifficulty);
   }
 
   destroy() {
-    removeComponent(this._gameSettingsPageComponent);
+    this._gameSettingsPageComponent.getElement().remove();
+  }
+
+  _handleSelectGameCards(value) {
+    console.log('value :>> ', value);
+  }
+
+  _handleSelectDifficulty(value) {
+    console.log('value :>> ', value);
   }
 }

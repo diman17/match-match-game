@@ -7,9 +7,9 @@ const gameSettings = {
     selectText: 'select game cards type',
     options: ['animals', 'cars'],
   },
-  DIFFICULT: {
+  DIFFICULTY: {
     label: 'Difficulty',
-    name: 'difficult',
+    name: 'difficulty',
     selectText: 'select game type',
     options: ['3x4', '4x4'],
   },
@@ -43,5 +43,23 @@ export class GameSettingsPageComponent extends AbstractComponent {
 
   getTemplate() {
     return createGameSettingsPageTemplate(this._gameSettings);
+  }
+
+  selectGameCardsHandler(handler) {
+    this.getElement()
+      .querySelector(`.game-settings__select[name=${gameSettings.GAME_CARDS.name}]`)
+      .addEventListener('input', (event) => {
+        const {value} = event.target;
+        handler(value);
+      });
+  }
+
+  selectDifficultyHandler(handler) {
+    this.getElement()
+      .querySelector(`.game-settings__select[name=${gameSettings.DIFFICULTY.name}]`)
+      .addEventListener('input', (event) => {
+        const {value} = event.target;
+        handler(value);
+      });
   }
 }
