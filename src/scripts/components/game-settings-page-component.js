@@ -49,7 +49,7 @@ export class GameSettingsPageComponent extends AbstractComponent {
     this.getElement()
       .querySelector(`.game-settings__select[name=${gameSettings.GAME_CARDS.name}]`)
       .addEventListener('input', (event) => {
-        const {value} = event.target;
+        const { value } = event.target;
         handler(value);
       });
   }
@@ -58,7 +58,7 @@ export class GameSettingsPageComponent extends AbstractComponent {
     this.getElement()
       .querySelector(`.game-settings__select[name=${gameSettings.DIFFICULTY.name}]`)
       .addEventListener('input', (event) => {
-        const {value} = event.target;
+        const { value } = event.target;
         handler(value);
       });
   }

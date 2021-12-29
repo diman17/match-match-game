@@ -3,8 +3,9 @@ import { BestScorePageController } from '../controllers/best-score-page-controll
 import { GameSettingsPageController } from '../controllers/game-settings-page-controller';
 
 export class Router {
-  constructor(rootContainer) {
+  constructor(rootContainer, model) {
     this._rootConstainer = rootContainer;
+    this._model = model;
 
     this.routes = {
       ABOUT_GAME_PAGE: {
@@ -13,11 +14,11 @@ export class Router {
       },
       BEST_SCORE_PAGE: {
         hash: '#best-score',
-        controller: new BestScorePageController(this._rootConstainer),
+        controller: new BestScorePageController(this._rootConstainer, this._model.getPlayers()),
       },
       GAME_SETTINGS_PAGE: {
         hash: '#game-settings',
-        controller: new GameSettingsPageController(this._rootConstainer),
+        controller: new GameSettingsPageController(this._rootConstainer, this._model),
       },
     };
 
@@ -38,7 +39,7 @@ export class Router {
       this._currentRoute.destroy();
     }
 
-    const {hash} = window.location;
+    const { hash } = window.location;
     this._defineActivePageLink(hash, this.pageLinkElements);
 
     const controller = this._findControllerByHash(hash, this.routes);
@@ -75,7 +76,7 @@ export class Router {
   _handleHashChange() {
     this._renderRoute();
 
-    const {hash} = window.location;
+    const { hash } = window.location;
     this._defineActivePageLink(hash, this.pageLinkElements);
   }
 

@@ -2,10 +2,14 @@ import { GameSettingsPageComponent } from '../components/game-settings-page-comp
 import { renderComponent } from '../utils/common';
 
 export class GameSettingsPageController {
-  constructor(container) {
+  constructor(container, model) {
     this._container = container;
+    this._model = model;
 
     this._gameSettingsPageComponent = new GameSettingsPageComponent();
+
+    this._handleSelectGameCards = this._handleSelectGameCards.bind(this);
+    this._handleSelectDifficulty = this._handleSelectDifficulty.bind(this);
   }
 
   init() {
@@ -20,10 +24,10 @@ export class GameSettingsPageController {
   }
 
   _handleSelectGameCards(value) {
-    console.log('value :>> ', value);
+    this._model.setGameCardsSetting(value);
   }
 
   _handleSelectDifficulty(value) {
-    console.log('value :>> ', value);
+    this._model.setDifficultySetting(value);
   }
 }
