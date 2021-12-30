@@ -1,15 +1,24 @@
 import { AbstractSmartComponent } from './abstract-smart-component';
 
+const createButtonStartGameTemplate = () => `<li class="user-navigation__item">
+    <button class="button button--start-game user-navigation__button">Start game</button>
+  </li>`;
+
+const createButtonStopGameTemplate = () => `<li class="user-navigation__item">
+  <button class="button button--stop-game user-navigation__button">Stop game</button>
+</li>`;
+
 const createUserNavigationLogInTemplate = () => `<ul class="user-navigation user-navigation--log-in">
     <li class="user-navigation__item">
       <button class="button button--log-in user-navigation__button">Log in</button>
     </li">
   </ul>`;
 
-const createUserNavigationLogOutTemplate = (userAvatar) => `<ul class="user-navigation user-navigation--log-out">
-    <li class="user-navigation__item">
-      <button class="button button--start-game user-navigation__button">Start game</button>
-    </li>
+const createUserNavigationLogOutTemplate = (
+  userAvatar,
+  isGameStart,
+) => `<ul class="user-navigation user-navigation--log-out">
+    ${isGameStart ? createButtonStopGameTemplate() : createButtonStartGameTemplate()}
     <li class="user-navigation__item">
       <button class="button button--log-out button user-navigation__button">Log out</button>
     </li">
@@ -18,18 +27,20 @@ const createUserNavigationLogOutTemplate = (userAvatar) => `<ul class="user-navi
     </li">
   </ul>`;
 
-const createUserNavigationTemplate = (isLogIn, userAvatar) =>
-  `${isLogIn ? createUserNavigationLogOutTemplate(userAvatar) : createUserNavigationLogInTemplate()}`;
+const createUserNavigationTemplate = (isLogIn, userAvatar, isGameStart) =>
+  `${isLogIn ? createUserNavigationLogOutTemplate(userAvatar, isGameStart) : createUserNavigationLogInTemplate()}`;
 
 export class UserNavigationComponent extends AbstractSmartComponent {
   constructor() {
     super();
+
     this.isLogIn = false;
+    this.isGameStart = false;
     this.userAvatar = './assets/images/no-avatar.png';
   }
 
   getTemplate() {
-    return createUserNavigationTemplate(this.isLogIn, this.userAvatar);
+    return createUserNavigationTemplate(this.isLogIn, this.userAvatar, this.isGameStart);
   }
 
   recoveryListeners() {
@@ -39,7 +50,14 @@ export class UserNavigationComponent extends AbstractSmartComponent {
 
     if (this.isLogIn) {
       this.buttonLogOutClickHandler(this._handleButtonLogOutClick);
+    }
+
+    if (!this.isGameStart) {
       this.buttonStartGameClickHandler(this._handleButtonStartGameClick);
+    }
+
+    if (this.isGameStart) {
+      this.buttonStopGameClickHandler(this._handleButtonStopGameClick);
     }
   }
 
@@ -58,9 +76,16 @@ export class UserNavigationComponent extends AbstractSmartComponent {
   }
 
   buttonStartGameClickHandler(handler) {
-    if (this.isLogIn) {
+    if (this.isLogIn && !this.isGameStart) {
       this.getElement().querySelector('.button--start-game').addEventListener('click', handler);
     }
     this._handleButtonStartGameClick = handler;
+  }
+
+  buttonStopGameClickHandler(handler) {
+    if (this.isLogIn && this.isGameStart) {
+      this.getElement().querySelector('.button--stop-game').addEventListener('click', handler);
+    }
+    this._handleButtonStopGameClick = handler;
   }
 }

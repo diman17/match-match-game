@@ -4,9 +4,12 @@ import { removeComponent, renderComponent } from '../utils/common';
 import { PopupLogInController } from './popup-log-in-controller';
 
 export class UserNavigationController {
-  constructor(container, rootContainer) {
+  constructor(container, rootContainer, model, onLogOut, stopGame) {
     this._container = container;
     this._rootContainer = rootContainer;
+    this._model = model;
+    this._onLogOut = onLogOut;
+    this._onStopGame = stopGame;
 
     this._userNavigationComponent = new UserNavigationComponent();
 
@@ -16,6 +19,7 @@ export class UserNavigationController {
     this._handleButtonLogInClick = this._handleButtonLogInClick.bind(this);
     this._handleButtonLogOutClick = this._handleButtonLogOutClick.bind(this);
     this._handleButtonStartGameClick = this._handleButtonStartGameClick.bind(this);
+    this._handleButtonStopGameClick = this._handleButtonStopGameClick.bind(this);
     this._handleOverlayClick = this._handleOverlayClick.bind(this);
     this._handleEscKeyDown = this._handleEscKeyDown.bind(this);
   }
@@ -26,6 +30,7 @@ export class UserNavigationController {
     this._userNavigationComponent.buttonLogInClickHandler(this._handleButtonLogInClick);
     this._userNavigationComponent.buttonLogOutClickHandler(this._handleButtonLogOutClick);
     this._userNavigationComponent.buttonStartGameClickHandler(this._handleButtonStartGameClick);
+    this._userNavigationComponent.buttonStopGameClickHandler(this._handleButtonStopGameClick);
   }
 
   _handleButtonLogInClick() {
@@ -37,11 +42,41 @@ export class UserNavigationController {
 
   _handleButtonLogOutClick() {
     this._userNavigationComponent.isLogIn = false;
+    this._userNavigationComponent.isGameStart = false;
     this._userNavigationComponent.rerender();
+    this._onLogOut();
   }
 
   _handleButtonStartGameClick() {
-    console.log('Start game');
+    const settings = this._model.getSettings();
+
+    if (!settings.gameCards) {
+      console.log('choose game cards');
+      return;
+    }
+
+    if (!settings.difficulty) {
+      console.log('choose difficulty');
+      return;
+    }
+
+    this._changeButtonStartGame();
+    console.log('start game');
+  }
+
+  _changeButtonStartGame() {
+    this._userNavigationComponent.isGameStart = true;
+    this._userNavigationComponent.rerender();
+  }
+
+  _handleButtonStopGameClick() {
+    this._onStopGame();
+    this._changeButtonStopGame();
+  }
+
+  _changeButtonStopGame() {
+    this._userNavigationComponent.isGameStart = false;
+    this._userNavigationComponent.rerender();
   }
 
   _handleOverlayClick() {
@@ -74,11 +109,11 @@ export class UserNavigationController {
     }
   }
 
-  _onSuccessLogIn(isLogIn, userAvatar) {
+  _onSuccessLogIn(isLogIn, player) {
+    this._model.registerPlayer(player);
     this._hidePopupLogIn();
-
     this._userNavigationComponent.isLogIn = isLogIn;
-    this._userNavigationComponent.userAvatar = userAvatar;
+    this._userNavigationComponent.userAvatar = player.avatar;
     this._userNavigationComponent.rerender();
   }
 }

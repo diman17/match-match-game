@@ -1,12 +1,12 @@
 import { AbstractComponent } from './abstract-component';
 
 const createBestScoreItemTemplate = (player) => {
-  const { image, name, email, score } = player;
+  const { avatar, name, email, score } = player;
   return ` <li class="best-score__item">
     <div class="best-score__player-info">
       <img
         class="best-score__player-avatar"
-        src="${image}"
+        src="${avatar}"
         alt="player's avatar"
       />
       <div class="best-score__player-wrapper">

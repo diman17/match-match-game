@@ -5,7 +5,7 @@ const getRandomArrayItem = (array) => {
   return array[randomIndex];
 };
 
-const getRandomId = () => `${Math.floor(Math.random() * Math.floor(Math.random() * Date.now()))}`;
+export const getRandomId = () => `${Math.floor(Math.random() * Math.floor(Math.random() * Date.now()))}`;
 
 const names = ['Wiley Nelson', 'Gage Hall', 'Matias Anderson', 'Rosalie Simmons', 'Tala Jackson', 'Thalia Parker'];
 
@@ -16,7 +16,7 @@ const generatePlayer = () => {
 
   return {
     id: getRandomId(),
-    image: './assets/images/no-avatar.png',
+    avatar: './assets/images/no-avatar.png',
     name,
     email: generateEmail(name),
     score: getRandomIntegerNumber(0, 700),

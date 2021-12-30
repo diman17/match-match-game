@@ -1,3 +1,4 @@
+import { getRandomId } from '../mock/players';
 import { AbstractComponent } from './abstract-component';
 
 const createPopupLogInTemplate = () => {
@@ -43,6 +44,9 @@ export class PopupLogInComponent extends AbstractComponent {
     super();
     this.firstNameInput = this.getElement().querySelector('.popup-log-in__input');
 
+    this._firstName = '';
+    this._lastName = '';
+    this._email = '';
     this._userAvatar = './assets/images/no-avatar.png';
 
     this._isValidateFirstName = false;
@@ -60,10 +64,10 @@ export class PopupLogInComponent extends AbstractComponent {
     this.getElement()
       .querySelector('.popup-log-in__input[name="first-name"]')
       .addEventListener('input', (event) => {
-        const inputValue = event.target.value;
+        this._firstName = event.target.value;
         const inputAttributeName = event.target.getAttribute('name');
 
-        this._isValidateFirstName = this._checkInputTypeTextIsValidate(inputValue, inputAttributeName);
+        this._isValidateFirstName = this._checkInputTypeTextIsValidate(this._firstName, inputAttributeName);
       });
   }
 
@@ -71,10 +75,10 @@ export class PopupLogInComponent extends AbstractComponent {
     this.getElement()
       .querySelector('.popup-log-in__input[name="last-name"]')
       .addEventListener('input', (event) => {
-        const inputValue = event.target.value;
+        this._lastName = event.target.value;
         const inputAttributeName = event.target.getAttribute('name');
 
-        this._isValidateLastName = this._checkInputTypeTextIsValidate(inputValue, inputAttributeName);
+        this._isValidateLastName = this._checkInputTypeTextIsValidate(this._lastName, inputAttributeName);
       });
   }
 
@@ -82,10 +86,10 @@ export class PopupLogInComponent extends AbstractComponent {
     this.getElement()
       .querySelector('.popup-log-in__input[name="email"]')
       .addEventListener('input', (event) => {
-        const inputValue = event.target.value;
+        this._email = event.target.value;
         const inputAttributeName = event.target.getAttribute('name');
 
-        this._isValidateEmail = this._checkInputTypeEmailIsValidate(inputValue, inputAttributeName);
+        this._isValidateEmail = this._checkInputTypeEmailIsValidate(this._email, inputAttributeName);
       });
   }
 
@@ -111,7 +115,10 @@ export class PopupLogInComponent extends AbstractComponent {
 
         if (isValidateForm) {
           this._isLogIn = true;
-          handler(this._isLogIn, this._userAvatar);
+
+          const player = this._createPlayer(this._firstName, this._lastName, this._email, this._userAvatar);
+
+          handler(this._isLogIn, player);
         }
       });
   }
@@ -172,5 +179,15 @@ export class PopupLogInComponent extends AbstractComponent {
     return /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i.test(
       string,
     );
+  }
+
+  _createPlayer(firstName, lastName, email, avatar) {
+    return {
+      id: getRandomId(),
+      avatar,
+      name: `${firstName} ${lastName}`,
+      email,
+      score: 0,
+    };
   }
 }
