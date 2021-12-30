@@ -6,7 +6,7 @@ const createAboutGamePageTemplate = () => `<main class="game-about">
       <li class="game-about__item">
         <div class="game-about__item-description">
           <span class="game-about__item-number">1</span>
-          <p class="game-about__item-text">Register new player in game</p>
+          <p class="game-about__item-text">Register player in game</p>
         </div>
         <picture class="game-about__item-image">
           <source media="(max-width: 1280px)" srcset="./assets/images/about-game/reg-example-1280.jpg" />
