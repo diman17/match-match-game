@@ -9,14 +9,15 @@
 @import "abstracts/extends";
 
 /* layout */
-@import "layout/header";
-@import "layout/page-navigation";
-@import "layout/user-navigation";
-@import "layout/about-game";
-@import "layout/best-score";
-@import "layout/game-settings";
-@import "layout/popup-log-in";
-@import "layout/overlay";
+@import "layout/components/header";
+@import "layout/components/page-navigation";
+@import "layout/components/user-navigation";
+@import "layout/components/popup-log-in";
+@import "layout/components/overlay";
+
+@import "layout/pages/about-game-page";
+@import "layout/pages/best-score-page";
+@import "layout/pages/game-settings-page";
 
 /* components */
 @import "components/header";
@@ -24,8 +25,10 @@
 @import "components/user-navigation";
 @import "components/button";
 @import "components/button-burger";
-@import "components/about-game";
-@import "components/best-score";
-@import "components/game-settings";
 @import "components/popup-log-in";
 @import "components/overlay";
+
+/* pages */
+@import "pages/about-game-page";
+@import "pages/best-score-page";
+@import "pages/game-settings-page";

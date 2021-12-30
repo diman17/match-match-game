@@ -1,4 +1,4 @@
-.game-settings {
+.game-settings-page {
   @extend %main-page-layout;
 }
 
@@ -6,19 +6,19 @@
   @include visually-hidden;
 }
 
-.game-settings__list {
+.game-settings-page__list {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.game-settings__item {
+.game-settings-page__item {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 30px;
 }
 
-.game-settings__label {
+.game-settings-page__label {
   margin-bottom: 5px;
 }

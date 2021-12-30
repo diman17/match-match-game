@@ -1,16 +1,16 @@
-.best-score {
+.best-score-page {
   @extend %main-page;
 }
 
-.best-score__title {
+.best-score-page__title {
   @extend %main-page-title;
 }
 
-.best-score__item {
+.best-score-page__item {
   border-bottom: $best-score-border-bottom;
 }
 
-.best-score__player-avatar {
+.best-score-page__player-avatar {
   width: 40px;
   height: 40px;
 
@@ -25,7 +25,7 @@
   }
 }
 
-.best-score__player-name {
+.best-score-page__player-name {
   font: 500 14px/21px $base-font-family;
   color: $best-score-color;
   letter-spacing: 0.1px;
@@ -37,7 +37,7 @@
   }
 }
 
-.best-score__player-email {
+.best-score-page__player-email {
   font: 400 12px/15px $base-font-family;
   color: $best-score-color;
   letter-spacing: 0.4px;
@@ -49,7 +49,7 @@
   }
 }
 
-.best-score__player-score {
+.best-score-page__player-score {
   font: 500 14px/24px $base-font-family;
   color: $best-score-color;
   letter-spacing: 0.15px;
@@ -59,6 +59,6 @@
   }
 }
 
-.best-score__player-value {
+.best-score-page__player-value {
   color: $base-color;
 }

@@ -1,12 +1,12 @@
-.game-about {
+.about-game-page {
   @extend %main-page-layout;
 }
 
-.game-about__title {
+.about-game-page__title {
   @extend %main-page-title-layout;
 }
 
-.game-about__item {
+.about-game-page__item {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
@@ -18,7 +18,7 @@
   }
 }
 
-.game-about__item-description {
+.about-game-page__item-description {
   display: flex;
 
   @media (max-width: $media-small) {
@@ -26,7 +26,7 @@
   }
 }
 
-.game-about__item-number {
+.about-game-page__item-number {
   flex-shrink: 0;
   margin-right: 15px;
 }

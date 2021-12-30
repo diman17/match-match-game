@@ -1,4 +1,4 @@
-.game-settings {
+.game-settings-page {
   width: 70%;
   min-height: 250px;
   padding: 30px 100px 35px 30px;
@@ -11,19 +11,19 @@
   }
 }
 
-.game-settings__item {
+.game-settings-page__item {
   padding-bottom: 10px;
 
   border-bottom: $game-settings-border-botton;
 }
 
-.game-settings__label {
+.game-settings-page__label {
   font: 500 20px/30px $base-font-family;
   color: $game-settings-label-color;
   letter-spacing: 0.15px;
 }
 
-.game-settings__select {
+.game-settings-page__select {
   padding-right: 25px;
   font: 400 14px/21px $base-font-family;
   color: $game-settings-option-disabled-color;
@@ -32,6 +32,6 @@
   border: none;
 }
 
-.game-settings__option {
+.game-settings-page__option {
   color: $game-settings-option-color;
 }

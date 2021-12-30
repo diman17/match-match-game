@@ -16,19 +16,19 @@ const gameSettings = {
 };
 
 const createGameSettingsOptionTemplate = (option) =>
-  `<option class="game-settings__option" value="${option}">${option}</option>`;
+  `<option class="game-settings-page__option" value="${option}">${option}</option>`;
 
-const createGameSettingsItemTemplate = (setting) => `<li class="game-settings__item">
-    <label class="game-settings__label" for="${setting.name}">${setting.label}</label>
-    <select class="game-settings__select" id="${setting.name}" name="${setting.name}">
-      <option class="game-settings__option" disabled selected hidden>${setting.selectText}</option>
+const createGameSettingsItemTemplate = (setting) => `<li class="game-settings-page__item">
+    <label class="game-settings-page__label" for="${setting.name}">${setting.label}</label>
+    <select class="game-settings-page__select" id="${setting.name}" name="${setting.name}">
+      <option class="game-settings-page__option" disabled selected hidden>${setting.selectText}</option>
       ${setting.options.map((option) => createGameSettingsOptionTemplate(option)).join('\n')}
     </select>
   </li>`;
 
-const createGameSettingsPageTemplate = (settings) => `<main class="game-settings">
+const createGameSettingsPageTemplate = (settings) => `<main class="game-settings-page">
     <h2 class="main-settings__title">Game settings</h2>
-    <ul class="game-settings__list">
+    <ul class="game-settings-page__list">
       ${Object.values(settings)
         .map((setting) => createGameSettingsItemTemplate(setting))
         .join('\n')}
@@ -47,7 +47,7 @@ export class GameSettingsPageComponent extends AbstractComponent {
 
   selectGameCardsHandler(handler) {
     this.getElement()
-      .querySelector(`.game-settings__select[name=${gameSettings.GAME_CARDS.name}]`)
+      .querySelector(`.game-settings-page__select[name=${gameSettings.GAME_CARDS.name}]`)
       .addEventListener('input', (event) => {
         const { value } = event.target;
         handler(value);
@@ -56,7 +56,7 @@ export class GameSettingsPageComponent extends AbstractComponent {
 
   selectDifficultyHandler(handler) {
     this.getElement()
-      .querySelector(`.game-settings__select[name=${gameSettings.DIFFICULTY.name}]`)
+      .querySelector(`.game-settings-page__select[name=${gameSettings.DIFFICULTY.name}]`)
       .addEventListener('input', (event) => {
         const { value } = event.target;
         handler(value);

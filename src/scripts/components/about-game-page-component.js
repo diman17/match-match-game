@@ -1,39 +1,39 @@
 import { AbstractComponent } from './abstract-component';
 
-const createAboutGamePageTemplate = () => `<main class="game-about">
-    <h2 class="game-about__title">How to play?</h2>
-    <ul class="game-about__list">
-      <li class="game-about__item">
-        <div class="game-about__item-description">
-          <span class="game-about__item-number">1</span>
-          <p class="game-about__item-text">Register player in game</p>
+const createAboutGamePageTemplate = () => `<main class="about-game-page">
+    <h2 class="about-game-page__title">How to play?</h2>
+    <ul class="about-game-page__list">
+      <li class="about-game-page__item">
+        <div class="about-game-page__item-description">
+          <span class="about-game-page__item-number">1</span>
+          <p class="about-game-page__item-text">Register player in game</p>
         </div>
-        <picture class="game-about__item-image">
+        <picture class="about-game-page__item-image">
           <source media="(max-width: 1280px)" srcset="./assets/images/about-game/reg-example-1280.jpg" />
-          <img class="game-about__item-image" src="./assets/images/about-game/reg-example.jpg" alt="registration" />
+          <img class="about-game-page__item-image" src="./assets/images/about-game/reg-example.jpg" alt="registration" />
         </picture>
       </li>
-      <li class="game-about__item">
-        <div class="game-about__item-description">
-          <span class="game-about__item-number">2</span>
-          <p class="game-about__item-text">Configure your game settings</p>
+      <li class="about-game-page__item">
+        <div class="about-game-page__item-description">
+          <span class="about-game-page__item-number">2</span>
+          <p class="about-game-page__item-text">Configure your game settings</p>
         </div>
-        <picture class="game-about__item-image">
+        <picture class="about-game-page__item-image">
           <source media="(max-width: 1280px)" srcset="./assets/images/about-game/settings-example-1280.jpg" />
-          <img class="game-about__item-image" src="./assets/images/about-game/settings-example.jpg" alt="settings" />
+          <img class="about-game-page__item-image" src="./assets/images/about-game/settings-example.jpg" alt="settings" />
         </picture>
       </li>
-      <li class="game-about__item">
-        <div class="game-about__item-description">
-          <span class="game-about__item-number">3</span>
-          <p class="game-about__item-text">
+      <li class="about-game-page__item">
+        <div class="about-game-page__item-description">
+          <span class="about-game-page__item-number">3</span>
+          <p class="about-game-page__item-text">
             Start you new game! Remember card positions and match it before times up.
           </p>
         </div>
-        <picture class="game-about__item-image">
+        <picture class="about-game-page__item-image">
           <source media="(max-width: 1280px)" srcset="./assets/images/about-game/game-field-example-1280.jpg" />
           <img
-            class="game-about__item-image"
+            class="about-game-page__item-image"
             src="./assets/images/about-game/game-field-example.jpg"
             alt="game-field"
           />

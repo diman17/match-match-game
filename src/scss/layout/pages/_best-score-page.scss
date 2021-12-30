@@ -1,28 +1,28 @@
-.best-score {
+.best-score-page {
   @extend %main-page-layout;
 }
 
-.best-score__title {
+.best-score-page__title {
   @extend %main-page-title-layout;
 }
 
-.best-score__item {
+.best-score-page__item {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.best-score__player-info {
+.best-score-page__player-info {
   display: flex;
   justify-content: space-between;
 }
 
-.best-score__player-avatar {
+.best-score-page__player-avatar {
   margin-right: 15px;
   margin-bottom: 5px;
 }
 
-.best-score__player-score {
+.best-score-page__player-score {
   align-self: center;
   margin-left: 10px;
 }

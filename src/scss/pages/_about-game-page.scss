@@ -1,12 +1,12 @@
-.game-about {
+.about-game-page {
   @extend %main-page;
 }
 
-.game-about__title {
+.about-game-page__title {
   @extend %main-page-title;
 }
 
-.game-about__item-description {
+.about-game-page__item-description {
   width: 46%;
   padding: 15px;
 
@@ -21,7 +21,7 @@
   }
 }
 
-.game-about__item-number {
+.about-game-page__item-number {
   display: inline-block;
   width: 40px;
   height: 40px;
@@ -42,7 +42,7 @@
   }
 }
 
-.game-about__item-text {
+.about-game-page__item-text {
   font: 400 14px/20px $base-font-family;
   letter-spacing: 0.25px;
   color: $about-game-step-item-text-color;
