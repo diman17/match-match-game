@@ -1,0 +1,17 @@
+.popup-message {
+  width: 360px;
+  padding: 20px 16px 10px;
+
+  background-color: $popup-message-bg-color;
+  box-shadow: $base-shadow;
+
+  @media (max-width: $media-small) {
+    width: 320px;
+  }
+}
+
+.popup-message__text {
+  font: 400 14px/20px $base-font-family;
+  letter-spacing: 0.25px;
+  color: $popup-message-color;
+}

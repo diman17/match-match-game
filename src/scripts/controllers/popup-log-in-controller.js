@@ -24,7 +24,7 @@ export class PopupLogInController {
     this._popupLogInComponent.buttonResetClickHandler();
   }
 
-  hide() {
+  destroy() {
     this._popupLogInComponent.getElement().remove();
   }
 

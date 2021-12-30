@@ -2,6 +2,7 @@ import { OverlayComponent } from '../components/overlay-component';
 import { UserNavigationComponent } from '../components/user-navigation-component';
 import { removeComponent, renderComponent } from '../utils/common';
 import { PopupLogInController } from './popup-log-in-controller';
+import { PopupMessageController } from './popup-message-controller';
 
 export class UserNavigationController {
   constructor(container, rootContainer, model, onLogOut, stopGame) {
@@ -34,10 +35,7 @@ export class UserNavigationController {
   }
 
   _handleButtonLogInClick() {
-    this._overlayComponent = new OverlayComponent();
-    this._overlayComponent.overlayClickHandler(this._handleOverlayClick);
-
-    this._showPopupLogIn();
+    this._renderPopupLogIn();
   }
 
   _handleButtonLogOutClick() {
@@ -51,12 +49,12 @@ export class UserNavigationController {
     const settings = this._model.getSettings();
 
     if (!settings.gameCards) {
-      console.log('choose game cards');
+      this._renderPopupMessage('Choose game cards, please.');
       return;
     }
 
     if (!settings.difficulty) {
-      console.log('choose difficulty');
+      this._renderPopupMessage('Choose difficulty, please.');
       return;
     }
 
@@ -80,10 +78,13 @@ export class UserNavigationController {
   }
 
   _handleOverlayClick() {
-    this._hidePopupLogIn();
+    this._destroyPopupLogIn();
   }
 
-  _showPopupLogIn() {
+  _renderPopupLogIn() {
+    this._overlayComponent = new OverlayComponent();
+    this._overlayComponent.overlayClickHandler(this._handleOverlayClick);
+
     renderComponent(this._rootContainer, this._overlayComponent);
 
     this._popupLogInController.init();
@@ -91,10 +92,10 @@ export class UserNavigationController {
     document.addEventListener('keydown', this._handleEscKeyDown);
   }
 
-  _hidePopupLogIn() {
+  _destroyPopupLogIn() {
     removeComponent(this._overlayComponent);
 
-    this._popupLogInController.hide();
+    this._popupLogInController.destroy();
 
     document.removeEventListener('keydown', this._handleEscKeyDown);
   }
@@ -103,7 +104,7 @@ export class UserNavigationController {
     const isEscKey = event.key === 'Escape' || event.key === 'Esc';
 
     if (isEscKey) {
-      this._hidePopupLogIn();
+      this._destroyPopupLogIn();
 
       document.removeEventListener('keydown', this._handleEscKeyDown);
     }
@@ -111,9 +112,17 @@ export class UserNavigationController {
 
   _onSuccessLogIn(isLogIn, player) {
     this._model.registerPlayer(player);
-    this._hidePopupLogIn();
+    this._destroyPopupLogIn();
     this._userNavigationComponent.isLogIn = isLogIn;
     this._userNavigationComponent.userAvatar = player.avatar;
     this._userNavigationComponent.rerender();
+  }
+
+  _renderPopupMessage(message) {
+    this._overlayComponent = new OverlayComponent();
+    renderComponent(this._rootContainer, this._overlayComponent);
+
+    this._popupMessageController = new PopupMessageController(this._rootContainer, message, this._overlayComponent);
+    this._popupMessageController.init();
   }
 }

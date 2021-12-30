@@ -1,0 +1,19 @@
+.popup-message {
+  position: absolute;
+  top: 330px;
+  left: calc(50% - 180px);
+  z-index: $index-popup;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: $media-small) {
+    top: 260px;
+    left: calc(50% - 160px);
+  }
+}
+
+.popup-message__text {
+  margin-bottom: 10px;
+}
