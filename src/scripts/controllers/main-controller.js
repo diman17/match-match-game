@@ -10,6 +10,7 @@ export class MainController {
     this._model = model;
 
     this._onLogOut = this._onLogOut.bind(this);
+    this._onStartGame = this._onStartGame.bind(this);
     this._onStopGame = this._onStopGame.bind(this);
 
     this._headerComponent = new HeaderComponent();
@@ -19,6 +20,7 @@ export class MainController {
       this._container,
       this._model,
       this._onLogOut,
+      this._onStartGame,
       this._onStopGame,
     );
 
@@ -37,10 +39,21 @@ export class MainController {
   }
 
   _onLogOut() {
-    window.location.hash = this._router.routes.ABOUT_GAME_PAGE.hash;
+    this._router.changeRoute(this._router.routes.ABOUT_GAME_PAGE.hash);
+
+    this._pageNavigationComponent.activateLinks();
+  }
+
+  _onStartGame(Controller) {
+    this._router.addRoute('GAME_PLAY_PAGE', '#game-play', Controller, this._container, this._model);
+    this._router.changeRoute(this._router.routes.GAME_PLAY_PAGE.hash);
+
+    this._pageNavigationComponent.disableLinks();
   }
 
   _onStopGame() {
-    window.location.hash = this._router.routes.GAME_SETTINGS_PAGE.hash;
+    this._router.changeRoute(this._router.routes.GAME_SETTINGS_PAGE.hash);
+
+    this._pageNavigationComponent.activateLinks();
   }
 }

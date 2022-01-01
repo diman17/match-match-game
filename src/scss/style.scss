@@ -19,6 +19,7 @@
 @import "layout/pages/about-game-page";
 @import "layout/pages/best-score-page";
 @import "layout/pages/game-settings-page";
+@import "layout/pages/game-play-page";
 
 /* components */
 @import "components/header";
@@ -29,8 +30,11 @@
 @import "components/popup-log-in";
 @import "components/overlay";
 @import "components/popup-message";
+@import "components/card";
+@import "components/stopwatch";
 
 /* pages */
 @import "pages/about-game-page";
 @import "pages/best-score-page";
 @import "pages/game-settings-page";
+@import "pages/game-play-page";

@@ -1,16 +1,18 @@
 import { OverlayComponent } from '../components/overlay-component';
 import { UserNavigationComponent } from '../components/user-navigation-component';
 import { removeComponent, renderComponent } from '../utils/common';
+import { GamePlayPageController } from './game-play-page-controller';
 import { PopupLogInController } from './popup-log-in-controller';
 import { PopupMessageController } from './popup-message-controller';
 
 export class UserNavigationController {
-  constructor(container, rootContainer, model, onLogOut, stopGame) {
+  constructor(container, rootContainer, model, onLogOut, onStartGame, onStopGame) {
     this._container = container;
     this._rootContainer = rootContainer;
     this._model = model;
     this._onLogOut = onLogOut;
-    this._onStopGame = stopGame;
+    this._onStartGame = onStartGame;
+    this._onStopGame = onStopGame;
 
     this._userNavigationComponent = new UserNavigationComponent();
 
@@ -58,8 +60,8 @@ export class UserNavigationController {
       return;
     }
 
+    this._onStartGame(GamePlayPageController);
     this._changeButtonStartGame();
-    console.log('start game');
   }
 
   _changeButtonStartGame() {

@@ -1,0 +1,13 @@
+.stopwatch {
+  width: 256px;
+  height: 64px;
+
+  font: 500 36px/36px $base-font-family;
+  letter-spacing: 0.15px;
+  text-align: center;
+  color: $stopwatch-color;
+
+  background-color: $stopwatch-bg-color;
+  border: none;
+  box-shadow: $stopwatch-shadow;
+}

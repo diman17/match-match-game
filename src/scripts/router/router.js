@@ -34,6 +34,21 @@ export class Router {
     this._hashChangeHandler(this._handleHashChange);
   }
 
+  addRoute(routeName, hash, Controller, container, model) {
+    this.routes[routeName] = {
+      hash,
+      controller: new Controller(container, model),
+    };
+  }
+
+  removeRoute(routeName) {
+    delete this.routes[routeName];
+  }
+
+  changeRoute(newHash) {
+    window.location.hash = newHash;
+  }
+
   _renderRoute() {
     if (this._currentRoute) {
       this._currentRoute.destroy();
@@ -43,6 +58,9 @@ export class Router {
     this._defineActivePageLink(hash, this.pageLinkElements);
 
     const controller = this._findControllerByHash(hash, this.routes);
+
+    if (!controller) return;
+
     this._currentRoute = controller;
     this._currentRoute.init();
   }
@@ -52,7 +70,7 @@ export class Router {
       return routesList.ABOUT_GAME_PAGE.controller;
     }
 
-    return Object.values(routesList).find((route) => route.hash === hash).controller;
+    return Object.values(routesList).find((route) => route.hash === hash)?.controller;
   }
 
   _defineActivePageLink(hash, pagelinks) {

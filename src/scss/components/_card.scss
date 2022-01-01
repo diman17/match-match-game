@@ -1,0 +1,130 @@
+.layout-3x4 .card {
+  position: relative;
+  width: 168px;
+  height: 168px;
+
+  @media (max-width: $media-middle) {
+    width: 120px;
+    height: 120px;
+  }
+
+  @media (max-width: $media-small) {
+    width: 100px;
+    height: 100px;
+  }
+
+  @media (max-width: $media-extra-small) {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.layout-4x4 .card {
+  position: relative;
+  width: 168px;
+  height: 138px;
+
+  @media (max-width: $media-middle) {
+    width: 120px;
+    height: 100px;
+  }
+
+  @media (max-width: $media-small) {
+    width: 100px;
+    height: 80px;
+  }
+
+  @media (max-width: $media-extra-small) {
+    width: 57px;
+    height: 67px;
+  }
+}
+
+.card {
+  cursor: pointer;
+}
+
+.card__container {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.card__wrapper {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  perspective: 1000px;
+}
+
+.card__front {
+  background-image: url("../assets/images/facedown.jpg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+
+  box-shadow: $base-shadow;
+  border-radius: 4px;
+}
+
+.card__back {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+
+  box-shadow: $base-shadow;
+  border-radius: 4px;
+}
+
+.card__front,
+.card__back {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: 700ms;
+  transition-property: transform;
+  backface-visibility: hidden;
+}
+
+.succes::after,
+.error::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.succes::after {
+  background-image: url("../assets/images/succes.png");
+}
+
+.error::after {
+  background-image: url("../assets/images/error.png");
+}
+
+.flip {
+  pointer-events: none;
+}

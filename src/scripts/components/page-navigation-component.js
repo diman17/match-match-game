@@ -23,6 +23,18 @@ export class PageNavigationComponent extends AbstractComponent {
     return createPageNavigationTemplate(this._routes);
   }
 
+  disableLinks() {
+    this.pageLinkElements.forEach((link) => {
+      link.classList.add('disabled');
+    });
+  }
+
+  activateLinks() {
+    this.pageLinkElements.forEach((link) => {
+      link.classList.remove('disabled');
+    });
+  }
+
   navigationClickHandler() {
     this.pageLinkElements.forEach((pageLink) => {
       pageLink.addEventListener('click', () => {

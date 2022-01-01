@@ -32,12 +32,16 @@ $popup-log-in-input-placeholder-color: rgba(0 0 0 / 70%);
 $popup-message-bg-color: #fff;
 $popup-message-color: rgba(0 0 0 / 60%);
 
+$stopwatch-color: rgba(0 0 0 / 40%);
+$stopwatch-bg-color: #fff;
+
 /* fonts */
 $base-font-family: "Roboto", sans-serif;
 
 /* media */
-$media-middle: 1280px;
-$media-small: 768px;
+$media-middle: 1279px;
+$media-small: 767px;
+$media-extra-small: 575px;
 
 /* sizes */
 $height-header: 65px;
@@ -51,6 +55,8 @@ $button-shadow: 0 3px 5px rgba(0 0 0 / 20%), 0 1px 18px rgba(0 0 0 / 12%), 0 6px
 $button-hover-shadow: 0 3px 5px rgba(0 0 0 / 30%), 0 1px 18px rgba(0 0 0 / 22%), 0 6px 10px rgba(0 0 0 / 24%);
 
 $game-settings-shadow: 0 6px 5px rgba(0 0 0 / 24%), 0 9px 18px rgba(0 0 0 / 18%);
+
+$stopwatch-shadow: 0 4px 4px rgba(0 0 0 / 24%);
 
 /* z-index */
 $index-navigation: 5;

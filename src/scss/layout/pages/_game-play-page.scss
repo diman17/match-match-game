@@ -1,0 +1,39 @@
+.game-play-page {
+  @extend %main-page-layout;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.layout-3x4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+
+  @media (max-width: $media-small) {
+    gap: 10px;
+  }
+
+  @media (max-width: $media-extra-small) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.layout-4x4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+
+  @media (max-width: $media-small) {
+    gap: 10px;
+  }
+}
+
+.game-play-page__stopwatch {
+  margin-bottom: 60px;
+
+  @media (max-width: $media-small) {
+    margin-bottom: 45px;
+  }
+}

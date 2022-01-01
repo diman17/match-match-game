@@ -1,0 +1,9 @@
+.game-play-page {
+  @extend %main-page;
+
+  padding: 20px 0 40px;
+}
+
+.game-play-page__title {
+  @include visually-hidden;
+}
