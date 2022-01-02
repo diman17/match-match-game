@@ -1,5 +1,5 @@
 import { BestScorePageComponent } from '../components/best-score-page-component';
-import { removeComponent, renderComponent } from '../utils/common';
+import { removeComponent, renderComponent } from '../utils/component';
 
 export class BestScorePageController {
   constructor(container, players) {

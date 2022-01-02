@@ -1,6 +1,6 @@
 import { HeaderComponent } from '../components/header-component';
 import { PageNavigationComponent } from '../components/page-navigation-component';
-import { renderComponent } from '../utils/common';
+import { renderComponent } from '../utils/component';
 import { UserNavigationController } from './user-navigation-controller';
 
 export class MainController {

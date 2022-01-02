@@ -1,6 +1,6 @@
 import { OverlayComponent } from '../components/overlay-component';
 import { UserNavigationComponent } from '../components/user-navigation-component';
-import { removeComponent, renderComponent } from '../utils/common';
+import { removeComponent, renderComponent } from '../utils/component';
 import { GamePlayPageController } from './game-play-page-controller';
 import { PopupLogInController } from './popup-log-in-controller';
 import { PopupMessageController } from './popup-message-controller';

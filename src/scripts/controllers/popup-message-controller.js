@@ -1,5 +1,5 @@
 import { PopupMessageComponent } from '../components/popup-message-component';
-import { removeComponent, renderComponent } from '../utils/common';
+import { removeComponent, renderComponent } from '../utils/component';
 
 export class PopupMessageController {
   constructor(container, textMessage, overlayComponent) {

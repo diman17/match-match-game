@@ -1,5 +1,5 @@
 import { PopupLogInComponent } from '../components/popup-login-in-component';
-import { renderComponent } from '../utils/common';
+import { renderComponent } from '../utils/component';
 
 export class PopupLogInController {
   constructor(container, onSuccessLogIn) {

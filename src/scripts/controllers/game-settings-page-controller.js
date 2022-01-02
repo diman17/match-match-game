@@ -1,5 +1,5 @@
 import { GameSettingsPageComponent } from '../components/game-settings-page-component';
-import { renderComponent } from '../utils/common';
+import { renderComponent } from '../utils/component';
 
 export class GameSettingsPageController {
   constructor(container, model) {

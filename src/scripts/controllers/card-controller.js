@@ -1,5 +1,5 @@
 import { CardComponent } from '../components/card-component';
-import { removeComponent, renderComponent } from '../utils/common';
+import { removeComponent, renderComponent } from '../utils/component';
 
 export class CardController {
   constructor(container, image, onClickCard) {

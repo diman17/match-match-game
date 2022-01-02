@@ -1,5 +1,5 @@
 import { AboutGamePageComponent } from '../components/about-game-page-component';
-import { removeComponent, renderComponent } from '../utils/common';
+import { removeComponent, renderComponent } from '../utils/component';
 
 export class AboutGamePageController {
   constructor(container) {

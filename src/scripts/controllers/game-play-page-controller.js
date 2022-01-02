@@ -1,11 +1,7 @@
 import { GamePlayPageComponent } from '../components/game-play-page-component';
-import {
-  defineCardsCount,
-  getRandomItemsFromArray,
-  getShuffledArray,
-  removeComponent,
-  renderComponent,
-} from '../utils/common';
+import { removeComponent, renderComponent } from '../utils/component';
+import { defineCardsCount } from '../utils/game';
+import { getRandomItemsFromArray, getShuffledArray } from '../utils/common';
 import { CardController } from './card-controller';
 
 export class GamePlayPageController {
