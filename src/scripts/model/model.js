@@ -1,6 +1,9 @@
+import { cards } from '../mock/cards';
+
 export class Model {
   constructor() {
     this._players = [];
+    this._cards = [];
 
     this._settings = {
       gameCards: '',
@@ -36,6 +39,11 @@ export class Model {
 
   setDifficultySetting(value) {
     this._settings.difficulty = value;
+  }
+
+  getCardImages() {
+    this._cards = cards[this._settings.gameCards];
+    return this._cards;
   }
 
   _addPlayer(player) {

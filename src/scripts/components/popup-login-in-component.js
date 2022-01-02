@@ -1,4 +1,4 @@
-import { getRandomId } from '../mock/players';
+import { getRandomId } from '../utils/common';
 import { AbstractComponent } from './abstract-component';
 
 const createPopupLogInTemplate = () => {

@@ -1,11 +1,4 @@
-const getRandomIntegerNumber = (min, max) => Math.floor(min + Math.random() * (max + 1 - min));
-
-const getRandomArrayItem = (array) => {
-  const randomIndex = getRandomIntegerNumber(0, array.length - 1);
-  return array[randomIndex];
-};
-
-export const getRandomId = () => `${Math.floor(Math.random() * Math.floor(Math.random() * Date.now()))}`;
+import { getRandomArrayItem, getRandomId, getRandomIntegerNumber } from '../utils/common';
 
 const names = ['Wiley Nelson', 'Gage Hall', 'Matias Anderson', 'Rosalie Simmons', 'Tala Jackson', 'Thalia Parker'];
 

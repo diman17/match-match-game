@@ -1,0 +1,46 @@
+const CARDS_ANIMALS = [
+  './assets/images/animals/bird.jpg',
+  './assets/images/animals/butterfly_on_flower_186209.jpg',
+  './assets/images/animals/eagle.jpg',
+  './assets/images/animals/elephant.jpg',
+  './assets/images/animals/fallow_deer_208421.jpg',
+  './assets/images/animals/fox_red_animal_214704.jpg',
+  './assets/images/animals/golden_retriever_dog_animal_221045.jpg',
+  './assets/images/animals/horse.jpg',
+  './assets/images/animals/lion.jpg',
+  './assets/images/animals/moose_mooserack_male_215822.jpg',
+  './assets/images/animals/new_born_lamb_196164.jpg',
+  './assets/images/animals/penguin.jpg',
+  './assets/images/animals/sand_lizard_lizard_lacerta_agilis_220121.jpg',
+  './assets/images/animals/snail_helix_pomatia_219598.jpg',
+  './assets/images/animals/tiger.jpg',
+  './assets/images/animals/turtle_189748.jpg',
+  './assets/images/animals/wolf.jpg',
+  './assets/images/animals/zebra_head_190989.jpg',
+];
+
+const CARDS_CARS = [
+  './assets/images/cars/1939_ford_model_t_199576.jpg',
+  './assets/images/cars/1965_ford_mustang_convertible_516874.jpg',
+  './assets/images/cars/2015_ford_mustang_gt_516883.jpg',
+  './assets/images/cars/asphalt_auto_automobile_automotive_blacktop_car_602769.jpg',
+  './assets/images/cars/audi_cars_diesel_236760.jpg',
+  './assets/images/cars/bridal_car_car_classic_606584.jpg',
+  './assets/images/cars/car_automobile_race_267791.jpg',
+  './assets/images/cars/car_old_tivoli_217741.jpg',
+  './assets/images/cars/ford_gt_35_15_516157.jpg',
+  './assets/images/cars/ford_mustang_car_215784.jpg',
+  './assets/images/cars/ford_mustang_gt_215984.jpg',
+  './assets/images/cars/hamman_mystere_gold_515852.jpg',
+  './assets/images/cars/old_jaguar_car_186927.jpg',
+  './assets/images/cars/old_yellow_car_604696.jpg',
+  './assets/images/cars/phaeton_heyfield_vintage_rally_514842.jpg',
+  './assets/images/cars/red_sports_car_605187.jpg',
+  './assets/images/cars/summer_memory_513773.jpg',
+  './assets/images/cars/vintage_wedding_car_188682.jpg',
+];
+
+export const cards = {
+  animals: CARDS_ANIMALS,
+  cars: CARDS_CARS,
+};

@@ -101,7 +101,7 @@
   backface-visibility: hidden;
 }
 
-.succes::after,
+.success::after,
 .error::after {
   content: "";
 
@@ -113,12 +113,12 @@
   height: 100%;
 
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-position: 100% 0;
   background-size: cover;
 }
 
-.succes::after {
-  background-image: url("../assets/images/succes.png");
+.success::after {
+  background-image: url("../assets/images/success.png");
 }
 
 .error::after {
