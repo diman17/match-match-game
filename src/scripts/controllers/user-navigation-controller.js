@@ -1,7 +1,6 @@
 import { OverlayComponent } from '../components/overlay-component';
 import { UserNavigationComponent } from '../components/user-navigation-component';
 import { removeComponent, renderComponent } from '../utils/component';
-import { GamePlayPageController } from './game-play-page-controller';
 import { PopupLogInController } from './popup-log-in-controller';
 import { PopupMessageController } from './popup-message-controller';
 
@@ -36,6 +35,11 @@ export class UserNavigationController {
     this._userNavigationComponent.buttonStopGameClickHandler(this._handleButtonStopGameClick);
   }
 
+  changeButtonGame(isGameStart) {
+    this._userNavigationComponent.isGameStart = isGameStart;
+    this._userNavigationComponent.rerender();
+  }
+
   _handleButtonLogInClick() {
     this._renderPopupLogIn();
   }
@@ -60,23 +64,13 @@ export class UserNavigationController {
       return;
     }
 
-    this._onStartGame(GamePlayPageController);
-    this._changeButtonStartGame();
-  }
-
-  _changeButtonStartGame() {
-    this._userNavigationComponent.isGameStart = true;
-    this._userNavigationComponent.rerender();
+    this._onStartGame();
+    this.changeButtonGame(true);
   }
 
   _handleButtonStopGameClick() {
     this._onStopGame();
-    this._changeButtonStopGame();
-  }
-
-  _changeButtonStopGame() {
-    this._userNavigationComponent.isGameStart = false;
-    this._userNavigationComponent.rerender();
+    this.changeButtonGame(false);
   }
 
   _handleOverlayClick() {

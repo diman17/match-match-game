@@ -12,6 +12,7 @@ export class MainController {
     this._onLogOut = this._onLogOut.bind(this);
     this._onStartGame = this._onStartGame.bind(this);
     this._onStopGame = this._onStopGame.bind(this);
+    this._onFinishGame = this._onFinishGame.bind(this);
 
     this._headerComponent = new HeaderComponent();
     this._pageNavigationComponent = new PageNavigationComponent(this._router.routes);
@@ -44,8 +45,8 @@ export class MainController {
     this._pageNavigationComponent.activateLinks();
   }
 
-  _onStartGame(Controller) {
-    this._router.addRoute('GAME_PLAY_PAGE', '#game-play', Controller, this._container, this._model);
+  _onStartGame() {
+    this._router.addGamePlayRoute(this._onFinishGame);
     this._router.changeRoute(this._router.routes.GAME_PLAY_PAGE.hash);
 
     this._pageNavigationComponent.disableLinks();
@@ -55,5 +56,21 @@ export class MainController {
     this._router.changeRoute(this._router.routes.GAME_SETTINGS_PAGE.hash);
 
     this._pageNavigationComponent.activateLinks();
+  }
+
+  _onFinishGame() {
+    this._changeRoute(this._router.routes.BEST_SCORE_PAGE.hash);
+    this._changeButtonGame(false);
+  }
+
+  _changeRoute(route) {
+    this._router.changeRoute(route);
+    this._router.removeRoute('GAME_PLAY_PAGE');
+
+    this._pageNavigationComponent.activateLinks();
+  }
+
+  _changeButtonGame(isGameStart) {
+    this._userNavigationController.changeButtonGame(isGameStart);
   }
 }

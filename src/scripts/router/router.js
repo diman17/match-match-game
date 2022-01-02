@@ -1,5 +1,6 @@
 import { AboutGamePageController } from '../controllers/about-game-page-controller';
 import { BestScorePageController } from '../controllers/best-score-page-controller';
+import { GamePlayPageController } from '../controllers/game-play-page-controller';
 import { GameSettingsPageController } from '../controllers/game-settings-page-controller';
 
 export class Router {
@@ -34,10 +35,10 @@ export class Router {
     this._hashChangeHandler(this._handleHashChange);
   }
 
-  addRoute(routeName, hash, Controller, container, model) {
-    this.routes[routeName] = {
-      hash,
-      controller: new Controller(container, model),
+  addGamePlayRoute(onFinishGame) {
+    this.routes.GAME_PLAY_PAGE = {
+      hash: '#game-play',
+      controller: new GamePlayPageController(this._rootConstainer, this._model, onFinishGame),
     };
   }
 

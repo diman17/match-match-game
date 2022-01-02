@@ -3,11 +3,14 @@ import { removeComponent, renderComponent } from '../utils/component';
 import { defineCardsCount } from '../utils/game';
 import { getRandomItemsFromArray, getShuffledArray } from '../utils/common';
 import { CardController } from './card-controller';
+import { OverlayComponent } from '../components/overlay-component';
+import { PopupMessageController } from './popup-message-controller';
 
 export class GamePlayPageController {
-  constructor(container, model) {
+  constructor(container, model, _onFinishGame) {
     this._container = container;
     this._model = model;
+    this._onFinishGame = _onFinishGame;
 
     this._cardControllers = [];
 
@@ -70,7 +73,7 @@ export class GamePlayPageController {
       if (firstCard.getImage() === secondCard.getImage()) {
         this._flippedCardsCount += this._flippedCards.length;
 
-        this._flippedCards.forEach((card) => card.markAsSuccess(this._onFlippedAllCards));
+        this._markAsSuccess(this._flippedCards);
 
         this._flippedCards = [];
       } else {
@@ -88,6 +91,13 @@ export class GamePlayPageController {
     }
   }
 
+  _markAsSuccess(cards) {
+    cards.forEach((card) => card.markAsSuccess());
+    setTimeout(() => {
+      this._onFlippedAllCards();
+    }, 1200);
+  }
+
   _checkIsFlippedPairCards() {
     return this._flippedCards.length % 2 === 0;
   }
@@ -96,7 +106,20 @@ export class GamePlayPageController {
     if (this._flippedCardsCount === this._cardsCount) {
       this._gamePlayPageComponent.stopStopwatch();
       const time = this._gamePlayPageComponent.getTime();
-      console.log(`Congratulations! You successfully found all matches in ${time} minutes.`);
+      this._renderPopupMessage(`Congratulations! You successfully found all matches in ${time} minutes.`);
     }
+  }
+
+  _renderPopupMessage(message) {
+    this._overlayComponent = new OverlayComponent();
+    renderComponent(this._container, this._overlayComponent);
+
+    this._popupMessageController = new PopupMessageController(
+      this._container,
+      message,
+      this._overlayComponent,
+      this._onFinishGame,
+    );
+    this._popupMessageController.init();
   }
 }

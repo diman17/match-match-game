@@ -30,10 +30,9 @@ export class CardController {
     this._cardComponent.flipBack();
   }
 
-  markAsSuccess(cb) {
+  markAsSuccess() {
     setTimeout(() => {
       this._cardComponent.markAsSuccess();
-      cb();
     }, 800);
   }
 
