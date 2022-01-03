@@ -45,6 +45,7 @@ export class UserNavigationController {
   }
 
   _handleButtonLogOutClick() {
+    this._model.deleteCurrentPlayer();
     this._userNavigationComponent.isLogIn = false;
     this._userNavigationComponent.isGameStart = false;
     this._userNavigationComponent.rerender();
@@ -55,12 +56,12 @@ export class UserNavigationController {
     const settings = this._model.getSettings();
 
     if (!settings.gameCards) {
-      this._renderPopupMessage('Choose game cards, please.');
+      this._renderPopupMessage('Select game cards type, please.');
       return;
     }
 
     if (!settings.difficulty) {
-      this._renderPopupMessage('Choose difficulty, please.');
+      this._renderPopupMessage('Select game type, please.');
       return;
     }
 
@@ -108,6 +109,7 @@ export class UserNavigationController {
 
   _onSuccessLogIn(isLogIn, player) {
     this._model.registerPlayer(player);
+    this._model.setCurrentPlayer(player);
     this._destroyPopupLogIn();
     this._userNavigationComponent.isLogIn = isLogIn;
     this._userNavigationComponent.userAvatar = player.avatar;

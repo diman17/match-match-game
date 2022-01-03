@@ -1,6 +1,6 @@
 import { GamePlayPageComponent } from '../components/game-play-page-component';
 import { removeComponent, renderComponent } from '../utils/component';
-import { defineCardsCount } from '../utils/game';
+import { defineCardsCount, getScore, getSecondsFromTime } from '../utils/game';
 import { getRandomItemsFromArray, getShuffledArray } from '../utils/common';
 import { CardController } from './card-controller';
 import { OverlayComponent } from '../components/overlay-component';
@@ -16,6 +16,9 @@ export class GamePlayPageController {
 
     this._flippedCards = [];
     this._flippedCardsCount = 0;
+
+    this._allAttempts = 0;
+    this._failAttempts = 0;
 
     this._onClickCard = this._onClickCard.bind(this);
     this._onFinishTimer = this._onFinishTimer.bind(this);
@@ -68,6 +71,8 @@ export class GamePlayPageController {
     const isFlippedPairCards = this._checkIsFlippedPairCards();
 
     if (isFlippedPairCards) {
+      this._allAttempts++;
+
       const [firstCard, secondCard] = this._flippedCards;
 
       if (firstCard.getImage() === secondCard.getImage()) {
@@ -77,6 +82,8 @@ export class GamePlayPageController {
 
         this._flippedCards = [];
       } else {
+        this._failAttempts++;
+
         this._flippedCards.forEach((card) =>
           card.markAsError(() => {
             setTimeout(() => {
@@ -95,7 +102,7 @@ export class GamePlayPageController {
     cards.forEach((card) => card.markAsSuccess());
     setTimeout(() => {
       this._onFlippedAllCards();
-    }, 1200);
+    }, 800);
   }
 
   _checkIsFlippedPairCards() {
@@ -105,8 +112,14 @@ export class GamePlayPageController {
   _onFlippedAllCards() {
     if (this._flippedCardsCount === this._cardsCount) {
       this._gamePlayPageComponent.stopStopwatch();
+
       const time = this._gamePlayPageComponent.getTime();
-      this._renderPopupMessage(`Congratulations! You successfully found all matches in ${time} minutes.`);
+      const seconds = getSecondsFromTime(time);
+      const score = getScore(this._allAttempts, this._failAttempts, seconds);
+
+      this._model.updateCurrentPlayerScore(score);
+
+      this._renderPopupMessage(`Congratulations! You successfully found all matches in ${seconds} seconds.`);
     }
   }
 
