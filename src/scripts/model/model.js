@@ -24,19 +24,27 @@ export class Model {
     const index = this._players.findIndex((player) => player.email === registeredPlayer.email);
 
     if (index + 1) {
-      if (!this._players[index].score) {
-        this._updatePlayer(index, registeredPlayer);
-      } else {
-        registeredPlayer.score = this._players[index].score
-        this._updatePlayer(index, registeredPlayer);
-      }
+      registeredPlayer.score = this._players[index].score;
+      this._updatePlayer(index, registeredPlayer);
     } else {
       this._addPlayer(registeredPlayer);
     }
   }
 
+  _addPlayer(player) {
+    this._players.push(player);
+  }
+
+  _updatePlayer(index, player) {
+    this._players[index] = player;
+  }
+
   setCurrentPlayer(player) {
     this._currentPlayer = player;
+  }
+
+  getCurrentPlayer() {
+    return this._currentPlayer;
   }
 
   deleteCurrentPlayer() {
@@ -66,13 +74,5 @@ export class Model {
   getCardImages() {
     this._cards = cards[this._settings.gameCards];
     return this._cards;
-  }
-
-  _addPlayer(player) {
-    this._players.push(player);
-  }
-
-  _updatePlayer(index, player) {
-    this._players[index] = player;
   }
 }

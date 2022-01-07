@@ -5,10 +5,11 @@ import { PopupLogInController } from './popup-log-in-controller';
 import { PopupMessageController } from './popup-message-controller';
 
 export class UserNavigationController {
-  constructor(container, rootContainer, model, onLogOut, onStartGame, onStopGame) {
+  constructor(container, rootContainer, model, playersAPI, onLogOut, onStartGame, onStopGame) {
     this._container = container;
     this._rootContainer = rootContainer;
     this._model = model;
+    this._playersAPI = playersAPI;
     this._onLogOut = onLogOut;
     this._onStartGame = onStartGame;
     this._onStopGame = onStopGame;
@@ -107,13 +108,25 @@ export class UserNavigationController {
     }
   }
 
-  _onSuccessLogIn(isLogIn, player) {
-    this._model.registerPlayer(player);
-    this._model.setCurrentPlayer(player);
-    this._destroyPopupLogIn();
-    this._userNavigationComponent.isLogIn = isLogIn;
-    this._userNavigationComponent.userAvatar = player.avatar;
-    this._userNavigationComponent.rerender();
+  _onSuccessLogIn(isLogIn, registeredPlayer) {
+    this._playersAPI
+      .getPlayerByEmail(registeredPlayer.email)
+      .then((player) => {
+        if (player) {
+          registeredPlayer.score = player.score;
+          this._playersAPI.updatePlayer(registeredPlayer.email, registeredPlayer);
+        } else {
+          this._playersAPI.addPlayer(registeredPlayer);
+        }
+      })
+      .then(() => {
+        this._model.registerPlayer(registeredPlayer);
+        this._model.setCurrentPlayer(registeredPlayer);
+        this._destroyPopupLogIn();
+        this._userNavigationComponent.isLogIn = isLogIn;
+        this._userNavigationComponent.userAvatar = registeredPlayer.avatar;
+        this._userNavigationComponent.rerender();
+      });
   }
 
   _renderPopupMessage(message) {

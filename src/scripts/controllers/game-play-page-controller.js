@@ -7,9 +7,10 @@ import { OverlayComponent } from '../components/overlay-component';
 import { PopupMessageController } from './popup-message-controller';
 
 export class GamePlayPageController {
-  constructor(container, model, _onFinishGame) {
+  constructor(container, model, playersAPI, _onFinishGame) {
     this._container = container;
     this._model = model;
+    this._playersAPI = playersAPI;
     this._onFinishGame = _onFinishGame;
 
     this._cardControllers = [];
@@ -117,9 +118,23 @@ export class GamePlayPageController {
       const seconds = getSecondsFromTime(time);
       const score = getScore(this._allAttempts, this._failAttempts, seconds);
 
-      this._model.updateCurrentPlayerScore(score);
+      if (score <= this._model.getCurrentPlayer().score) {
+        this._renderPopupMessage(
+          `Congratulations! You successfully found all matches in ${seconds} seconds. Your score is ${score} points. Your record is ${
+            this._model.getCurrentPlayer().score
+          } points.`,
+        );
+      } else {
+        this._renderPopupMessage(
+          `Congratulations! You successfully found all matches in ${seconds} seconds. You broke your record of ${
+            this._model.getCurrentPlayer().score
+          } points! Your new record is ${score} points!`,
+        );
 
-      this._renderPopupMessage(`Congratulations! You successfully found all matches in ${seconds} seconds.`);
+        this._model.updateCurrentPlayerScore(score);
+
+        this._playersAPI.updatePlayer(this._model.getCurrentPlayer().email, this._model.getCurrentPlayer());
+      }
     }
   }
 

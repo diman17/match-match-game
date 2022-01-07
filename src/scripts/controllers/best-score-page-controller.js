@@ -8,19 +8,12 @@ export class BestScorePageController {
   }
 
   init() {
-    const sortPlayers = this._getTopPlayers(this._model.getPlayers());
-
-    this._bestScorePageComponent = new BestScorePageComponent(sortPlayers);
+    this._bestScorePageComponent = new BestScorePageComponent(this._model.getPlayers());
 
     renderComponent(this._container, this._bestScorePageComponent);
   }
 
   destroy() {
     removeComponent(this._bestScorePageComponent);
-  }
-
-  _getTopPlayers(players) {
-    const maxPlayers = 10;
-    return [...players].sort((a, b) => b.score - a.score).slice(0, maxPlayers);
   }
 }

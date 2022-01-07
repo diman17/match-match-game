@@ -4,9 +4,10 @@ import { GamePlayPageController } from '../controllers/game-play-page-controller
 import { GameSettingsPageController } from '../controllers/game-settings-page-controller';
 
 export class Router {
-  constructor(rootContainer, model) {
+  constructor(rootContainer, model, playersAPI) {
     this._rootConstainer = rootContainer;
     this._model = model;
+    this._playersAPI = playersAPI;
 
     this.routes = {
       ABOUT_GAME_PAGE: {
@@ -38,7 +39,7 @@ export class Router {
   addGamePlayRoute(onFinishGame) {
     this.routes.GAME_PLAY_PAGE = {
       hash: '#game-play',
-      controller: new GamePlayPageController(this._rootConstainer, this._model, onFinishGame),
+      controller: new GamePlayPageController(this._rootConstainer, this._model, this._playersAPI, onFinishGame),
     };
   }
 

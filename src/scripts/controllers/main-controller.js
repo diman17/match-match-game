@@ -4,10 +4,11 @@ import { renderComponent } from '../utils/component';
 import { UserNavigationController } from './user-navigation-controller';
 
 export class MainController {
-  constructor(container, router, model) {
+  constructor(container, router, model, playersAPI) {
     this._container = container;
     this._router = router;
     this._model = model;
+    this._playersAPI = playersAPI;
 
     this._onLogOut = this._onLogOut.bind(this);
     this._onStartGame = this._onStartGame.bind(this);
@@ -20,6 +21,7 @@ export class MainController {
       this._headerComponent.navigationElement,
       this._container,
       this._model,
+      this._playersAPI,
       this._onLogOut,
       this._onStartGame,
       this._onStopGame,

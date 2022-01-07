@@ -1,16 +1,19 @@
 import '../scss/style.scss';
+import { PlayersAPI } from './api/players-api';
 import { MainController } from './controllers/main-controller';
-import { generatePlayers } from './mock/players';
 import { Model } from './model/model';
 import { Router } from './router/router';
 
 const ROOT_CONTAINER = document.body;
-const players = generatePlayers();
 
+const playersAPI = new PlayersAPI();
 const model = new Model();
-model.setPlayers(players);
 
-const router = new Router(ROOT_CONTAINER, model);
+playersAPI.getPlayersAll().then((players) => {
+  model.setPlayers(players);
 
-const mainController = new MainController(ROOT_CONTAINER, router, model);
-mainController.init();
+  const router = new Router(ROOT_CONTAINER, model, playersAPI);
+
+  const mainController = new MainController(ROOT_CONTAINER, router, model, playersAPI);
+  mainController.init();
+});
