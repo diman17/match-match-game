@@ -142,12 +142,20 @@ export class GamePlayPageController {
       this._renderPopupMessage(
         `Congratulations! You successfully found all matches in ${seconds} seconds. Your new record is ${score} points!`,
       );
+
+      this._model.updateCurrentPlayerScore(score);
+
+      this._playersAPI.updatePlayer(this._model.getCurrentPlayer().email, this._model.getCurrentPlayer());
+
+      return;
     }
 
     if (score <= currentScore && currentScore !== 0) {
       this._renderPopupMessage(
         `Congratulations! You successfully found all matches in ${seconds} seconds. Your score is ${score} points. Your record is ${currentScore} points.`,
       );
+
+      return;
     }
 
     if (score > currentScore) {
