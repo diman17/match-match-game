@@ -51,6 +51,7 @@ module.exports = {
         { from: path.resolve(__dirname, 'src/assets/images/animals/'), to: "assets/images/animals" },
         { from: path.resolve(__dirname, 'src/assets/images/cars/'), to: "assets/images/cars" },
         { from: path.resolve(__dirname, 'src/assets/images/no-avatar.png'), to: "assets/images" },
+        { from: path.resolve(__dirname, 'src/assets/images/loader.gif'), to: "assets/images" },
       ],
     })
   ],

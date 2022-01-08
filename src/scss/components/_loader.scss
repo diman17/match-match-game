@@ -1,0 +1,12 @@
+.loader {
+  min-height: 800px;
+
+  @media (max-width: $media-middle) {
+    min-height: 500px;
+  }
+}
+
+.loader__image {
+  width: 200px;
+  height: 200px;
+}
