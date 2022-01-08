@@ -101,9 +101,11 @@ export class GamePlayPageController {
 
   _markAsSuccess(cards) {
     cards.forEach((card) => card.markAsSuccess());
-    setTimeout(() => {
-      this._onFlippedAllCards();
-    }, 800);
+    if (this._flippedCardsCount === this._cardsCount) {
+      setTimeout(() => {
+        this._onFlippedAllCards();
+      }, 800);
+    }
   }
 
   _checkIsFlippedPairCards() {
@@ -111,15 +113,13 @@ export class GamePlayPageController {
   }
 
   _onFlippedAllCards() {
-    if (this._flippedCardsCount === this._cardsCount) {
-      this._gamePlayPageComponent.stopStopwatch();
+    this._gamePlayPageComponent.stopStopwatch();
 
-      const time = this._gamePlayPageComponent.getTime();
-      const seconds = getSecondsFromTime(time);
-      const score = getScore(this._allAttempts, this._failAttempts, seconds);
+    const time = this._gamePlayPageComponent.getTime();
+    const seconds = getSecondsFromTime(time);
+    const score = getScore(this._allAttempts, this._failAttempts, seconds);
 
-      this._composeMessageForRender(score, seconds);
-    }
+    this._composeMessageForRender(score, seconds);
   }
 
   _renderPopupMessage(message) {

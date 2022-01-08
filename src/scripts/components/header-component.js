@@ -44,7 +44,13 @@ export class HeaderComponent extends AbstractComponent {
       if (this.getElement().classList.contains('navigation-show') && event.clientY > headerHeight + navHeight) {
         const rootContainer = event.path[event.path.length - 5] || container;
 
-        if (rootContainer.classList.contains('overlay') || rootContainer.classList.contains('popup-log-in')) return;
+        if (
+          rootContainer.classList.contains('overlay') ||
+          rootContainer.classList.contains('popup-log-in') ||
+          rootContainer.classList.contains('popup-message')
+        ) {
+          return;
+        }
 
         this.getElement().querySelector('.button-burger').click();
       }
