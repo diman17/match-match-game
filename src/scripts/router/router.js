@@ -16,7 +16,7 @@ export class Router {
       },
       BEST_SCORE_PAGE: {
         hash: '#best-score',
-        controller: new BestScorePageController(this._rootConstainer, this._model),
+        controller: new BestScorePageController(this._rootConstainer, this._model, this._playersAPI),
       },
       GAME_SETTINGS_PAGE: {
         hash: '#game-settings',
