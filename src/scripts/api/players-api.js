@@ -1,6 +1,6 @@
 export class PlayersAPI {
   constructor() {
-    this._url = 'http://localhost:3000/api/players';
+    this._url = 'https://match-match-game-diman17.herokuapp.com/api/players';
   }
 
   async getPlayersAll() {
