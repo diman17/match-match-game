@@ -35,4 +35,19 @@ export class HeaderComponent extends AbstractComponent {
         }
       });
   }
+
+  outerClickHandler(container) {
+    container.addEventListener('click', (event) => {
+      const headerHeight = this.getElement().offsetHeight;
+      const navHeight = this.getElement().querySelector('.header__navigation').offsetHeight;
+
+      if (this.getElement().classList.contains('navigation-show') && event.clientY > headerHeight + navHeight) {
+        const rootContainer = event.path[event.path.length - 5] || container;
+
+        if (rootContainer.classList.contains('overlay') || rootContainer.classList.contains('popup-log-in')) return;
+
+        this.getElement().querySelector('.button-burger').click();
+      }
+    });
+  }
 }

@@ -38,6 +38,7 @@ export class MainController {
     this._router.init();
 
     this._headerComponent.buttonBurgerClickHandler();
+    this._headerComponent.outerClickHandler(this._container);
     this._pageNavigationComponent.navigationClickHandler();
   }
 
