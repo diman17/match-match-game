@@ -118,23 +118,7 @@ export class GamePlayPageController {
       const seconds = getSecondsFromTime(time);
       const score = getScore(this._allAttempts, this._failAttempts, seconds);
 
-      if (score <= this._model.getCurrentPlayer().score) {
-        this._renderPopupMessage(
-          `Congratulations! You successfully found all matches in ${seconds} seconds. Your score is ${score} points. Your record is ${
-            this._model.getCurrentPlayer().score
-          } points.`,
-        );
-      } else {
-        this._renderPopupMessage(
-          `Congratulations! You successfully found all matches in ${seconds} seconds. You broke your record of ${
-            this._model.getCurrentPlayer().score
-          } points! Your new record is ${score} points!`,
-        );
-
-        this._model.updateCurrentPlayerScore(score);
-
-        this._playersAPI.updatePlayer(this._model.getCurrentPlayer().email, this._model.getCurrentPlayer());
-      }
+      this._composeMessageForRender(score, seconds);
     }
   }
 
@@ -149,5 +133,31 @@ export class GamePlayPageController {
       this._onFinishGame,
     );
     this._popupMessageController.init();
+  }
+
+  _composeMessageForRender(score, seconds) {
+    const currentScore = this._model.getCurrentPlayer().score;
+
+    if (currentScore === 0) {
+      this._renderPopupMessage(
+        `Congratulations! You successfully found all matches in ${seconds} seconds. Your new record is ${score} points!`,
+      );
+    }
+
+    if (score <= currentScore && currentScore !== 0) {
+      this._renderPopupMessage(
+        `Congratulations! You successfully found all matches in ${seconds} seconds. Your score is ${score} points. Your record is ${currentScore} points.`,
+      );
+    }
+
+    if (score > currentScore) {
+      this._renderPopupMessage(
+        `Congratulations! You successfully found all matches in ${seconds} seconds. You broke your record of ${currentScore} points! Your new record is ${score} points!`,
+      );
+
+      this._model.updateCurrentPlayerScore(score);
+
+      this._playersAPI.updatePlayer(this._model.getCurrentPlayer().email, this._model.getCurrentPlayer());
+    }
   }
 }
