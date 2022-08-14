@@ -8,7 +8,7 @@ Card game in which all of the cards are laid face down on a surface and two card
 
 ## Deploy:
 
-https://17-match-match-game.netlify.app/
+https://match-match-game.netlify.app/
 
 ---
 
@@ -20,7 +20,3 @@ https://17-match-match-game.netlify.app/
 
 SCSS was structured on [7-1 pattern](https://sass-guidelin.es/#the-7-1-pattern)  
 Javascript was written with OOP on MVC pattern
-
----
-
-## Backend's [repository](https://github.com/diman17/match-match-game-server)
