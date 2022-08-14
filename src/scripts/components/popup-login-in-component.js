@@ -1,4 +1,3 @@
-import { getRandomId } from '../utils/common';
 import { AbstractComponent } from './abstract-component';
 
 const createPopupLogInTemplate = () => {
@@ -183,7 +182,6 @@ export class PopupLogInComponent extends AbstractComponent {
 
   _createPlayer(firstName, lastName, email, avatar) {
     return {
-      id: getRandomId(),
       avatar,
       name: `${firstName} ${lastName}`,
       email,

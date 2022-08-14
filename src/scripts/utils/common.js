@@ -5,8 +5,6 @@ export const getRandomArrayItem = (array) => {
   return array[randomIndex];
 };
 
-export const getRandomId = () => `${Math.floor(Math.random() * Math.floor(Math.random() * Date.now()))}`;
-
 export const getRandomItemsFromArray = (array, count) => {
   const result = [];
 

@@ -1,20 +1,20 @@
 export class PlayersAPI {
   constructor() {
-    this._url = 'https://match-match-game-diman17.herokuapp.com/api/players';
+    this._url = 'https://62f7f368ab9f1f8e8906357a.mockapi.io/api/players';
   }
 
   async getPlayersAll() {
-    const players = await fetch(`${this._url}`);
+    const players = await fetch(`${this._url}?sortBy=score&order=desc`);
     return players.json();
   }
 
   async getPlayerByEmail(email) {
-    const player = await fetch(`${this._url}/${email}`);
+    const player = await fetch(`${this._url}?email=${email}`);
     return player.json();
   }
 
-  async updatePlayer(email, player) {
-    await fetch(`${this._url}/${email}`, {
+  async updatePlayer(id, player) {
+    await fetch(`${this._url}/${id}`, {
       method: 'PUT',
       headers: {
         'Content-type': 'Application/json',

@@ -145,7 +145,7 @@ export class GamePlayPageController {
 
       this._model.updateCurrentPlayerScore(score);
 
-      this._playersAPI.updatePlayer(this._model.getCurrentPlayer().email, this._model.getCurrentPlayer());
+      this._playersAPI.updatePlayer(this._model.getCurrentPlayer().id, this._model.getCurrentPlayer());
 
       return;
     }
@@ -165,7 +165,7 @@ export class GamePlayPageController {
 
       this._model.updateCurrentPlayerScore(score);
 
-      this._playersAPI.updatePlayer(this._model.getCurrentPlayer().email, this._model.getCurrentPlayer());
+      this._playersAPI.updatePlayer(this._model.getCurrentPlayer().id, this._model.getCurrentPlayer());
     }
   }
 }

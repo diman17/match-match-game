@@ -112,11 +112,18 @@ export class UserNavigationController {
     this._playersAPI
       .getPlayerByEmail(registeredPlayer.email)
       .then((player) => {
+        [player] = player;
         if (player) {
           registeredPlayer.score = player.score;
-          this._playersAPI.updatePlayer(registeredPlayer.email, registeredPlayer);
+          registeredPlayer.id = player.id;
+          this._playersAPI.updatePlayer(registeredPlayer.id, registeredPlayer);
         } else {
-          this._playersAPI.addPlayer(registeredPlayer);
+          this._playersAPI.addPlayer(registeredPlayer).then(() => {
+            this._playersAPI.getPlayerByEmail(registeredPlayer.email).then((player) => {
+              [player] = player;
+              registeredPlayer.id = player.id;
+            });
+          });
         }
       })
       .then(() => {
